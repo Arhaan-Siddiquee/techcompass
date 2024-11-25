@@ -1,4 +1,4 @@
-# 🌐 **Tech Compass**
+# 🌐 **TechCompass**
 
 **Tech Compass** is a resource hub designed to help technology enthusiasts and developers navigate their learning journey. The website provides comprehensive **roadmaps in PDF format** for various tech stacks, links to **online tech communities**, and details about **upcoming hackathons and events**. It also features embedded YouTube video tutorials for specific topics, making it a one-stop platform for tech learners.
 
