@@ -1,1 +1,1 @@
-# techcompass
+# ![alt text](website/techcompass/static/Icons/Logo.svg) TechCompass
