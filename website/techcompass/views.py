@@ -9,3 +9,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 def home_view(request):
 	# Add your view logic here
 	return render(request, 'pages/home.html')
+
+def roadmap_view(request):
+	# Add your view logic here
+	return render(request, 'pages/roadmaps.html')

@@ -1,13 +1,232 @@
 {%extends "layouts/base.html" %}
 
 {%block title %}Home {%endblock%}
+{% load static %}
 
 {%block body %}
-<h1>this is the home page</h1>
 
+<!--NAVBAR-->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent ">
+    <div class="container">
+      <!--LOGO-->
+      <a class="navbar-brand px-5" href="#"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px"></a>
+      <!--TOGGLE BTN-->
+      <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!--SIDEBAR-->
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active mx-4 px-3 fs-4" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:roadmap' %}">Roadmaps</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4 px-3 fs-4" href="#comm">Communities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4 px-3 fs-4" href="#events">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-4 px-3 fs-4" href="#about">About</a>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-<div class="cl">
-    lol
+<!--POSTER BOX-->
+<div id="top" class="d-flex justify-content-evenly">
+    <div class="m-5">
+      <div style="height: 150px;"></div>
+      <h1 style="color: white;">TechCompass
+        <h3 class="text-white pt-3"><p style="display: block;">Navigating your path to future ready skills</p></h3>
+      </h1></div>
+      <img src="{% static 'Icons/people-and-technology-removebg-preview.png' %}" id ="poster" alt="Poster" height="400px" style="padding-left: 15px; padding-top: 30px;">
+    </div>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+          <img src="{% static 'Icons/roadmap.svg' %}" alt="logo" height="50px">
+          <p style="display: block; color: white; padding-top:5px;">Roadmaps</p>
+        </div>
+        <div class="col">
+          <img src="{% static 'Icons/Resource.svg' %}" alt="logo" height="50px">
+          <p style="display: block; color: white; padding-top: 5px;">Resources</p>
+        </div>
+        <div class="col">
+          <img src="{% static 'Icons/communities.svg' %}" alt="logo" height="50px">
+          <p style="display: block; color: white; padding-top: 5px;">Communities</p>
+        </div>
+        <div class="col">
+          <img src="{% static 'Icons/events.svg' %}" alt="logo" height="50px">
+          <p style="display: block; color: white; padding-top: 5px;">Events</p>
+        </div>
+      </div>
+    </div>
+
+<!--COMMUNITIES-->
+<div style="height: 100px;"></div>
+<div id="comm" class="pt-5">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <b class="text-white" style="font-size:xxx-large;">Communities <img src="{% static 'Icons/communities.svg' %}" alt="logo" height="60px"></b>
+      <div class="fs-5 text-white pt-3">Join a dynamic coding community to connect, learn, and grow with passionate tech enthusiasts and professionals. Share your projects, learn in public, and seek referrals based on your achievements.</div>
+      <div class="container">
+        <div class="row gy-3 my-3">
+          <!--DISCORD-->
+          <div class="col-sm-9 col-md-4 col-lg-4">
+            <div class="card text-bg-dark border-info">
+              <div class="card-body">
+                <h5 class="card-title"><img src="{% static 'Icons/discord.png' %}" alt="logo" height="38px" class="px-2">Discord Servers</h5>
+                <ul style="list-style-type: none;" class="card-text pt-2">
+                  <li><a href="https://discord.com/invite/programming" target="_blank" class="text-white">The Programmer's Hangout</a></li>
+                  <li><a href="https://discord.com/invite/code" target="_blank" class="text-white">Coding Den</a></li>
+                  <li><a href="https://discord.com/invite/tccpp" target="_blank" class="text-white">Together C & C++</a></li>
+                  <li><a href="https://discord.com/invite/python" target="_blank" class="text-white">Python</a></li>
+                  <li><a href="https://discord.com/invite/devcord?source=post_page-----c673b8ab3a1c--------------------------------" target="_blank" class="text-white">devcord</a></li>
+                  <li><a href="https://discord.com/invite/WDrH3zuWFb" target="_blank" class="text-white">We Write Code</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--REDDIT-->
+          <div class="col-sm-9 col-md-4 col-lg-4">
+            <div class="card text-bg-dark border-info">
+              <div class="card-body">
+                <h5 class="card-title"><img src="{% static 'Icons/icons8-reddit-48.png' %}" alt="logo" height="38px" class="px-2">Reddit Servers</h5>
+                <ul style="list-style-type: none;" class="card-text pt-2">
+                  <li><a href="https://www.reddit.com/r/webdevelopment/" target="_blank" class="text-white">Web Development</a></li>
+                  <li><a href="https://www.reddit.com/r/programming/" target="_blank" class="text-white">Programming</a></li>
+                  <li><a href="https://www.reddit.com/r/learnmachinelearning/" target="_blank" class="text-white">Machine Learning</a></li>
+                  <li><a href="https://www.reddit.com/r/devops/" target="_blank" class="text-white">DevOps</a></li>
+                  <li><a href="https://www.reddit.com/r/SideProject/" target="_blank" class="text-white">SideProject</a></li>
+                  <li><a href="https://www.reddit.com/r/developersIndia/" target="_blank" class="text-white">Developers India</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--X-->
+          <div class="col-sm-9 col-md-4 col-lg-4">
+            <div class="card text-bg-dark border-info">
+              <div class="card-body">
+                <h5 class="card-title"><img src="{% static 'Icons/icons8-x-48.png' %}" alt="logo" height="38px" class="px-2">X Servers</h5>
+                <ul style="list-style-type: none;" class="card-text pt-2">
+                  <li><a href="https://x.com/codenewbies" target="_blank" class="text-white">CodeNewbies</a></li>
+                  <li><a href="https://x.com/gitconnected" target="_blank" class="text-white">Developer Community</a></li>
+                  <li><a href="https://x.com/indianswhocode" target="_blank" class="text-white">Indianswhocode</a></li>
+                  <li><a href="https://x.com/taskonxyz" target="_blank" class="text-white">Web3 Community</a></li>
+                  <li><a href="https://x.com/cryptooindia" target="_blank" class="text-white">Crypto India</a></li>
+                  <li><a href="https://x.com/i/communities/1699807431709041070" target="_blank" class="text-white">Software Developer</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!--EVENTS-->
+<!--EVENTS-->
+<div style="height: 100px;"></div>
+<div id="events" class="pt-5">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <b class="text-white" style="font-size:xxx-large;">Events and Tips <img src="{% static 'Icons/events.svg' %}" alt="logo" height="60px"></b>
+      <div class="fs-5 text-white pt-3">Discover the latest events and tips to help you stay informed and engaged</div>
+      <div class="container">
+        <div class="row gy-3 my-3">
+          <!--HACkATHONS-->
+          <div class="col-sm-4 col-md-6 col-lg-3">
+            <div class="card text-bg-dark border-info">
+              <div class="card-body">
+                <h5 class="card-title">Find Hackathons</h5>
+                <ul style="list-style-type: none;" class="card-text pt-2">
+                  <li><a href="https://devfolio.co/discover" target="_blank" class="text-white">DevFolio</a></li>
+                  <li><a href="https://unstop.com/hackathons" target="_blank" class="text-white">Unstop</a></li>
+                  <li><a href="https://mlh.io/" target="_blank" class="text-white">Major League Hacking</a></li>
+                  <li><a href="https://devpost.com/" target="_blank" class="text-white">Devpost</a></li>
+                  <li><a href="https://www.hackalist.org/" target="_blank" class="text-white">Hacklist</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--STAY UPDATED-->
+          <div class="col-sm-4 col-md-6 col-lg-3">
+            <div class="card text-bg-dark border-info">
+              <div class="card-body">
+                <h5 class="card-title">Stay Updated</h5>
+                <ul style="list-style-type: none; align-items: center;" class="card-text pt-2">
+                  <li><a href="https://daily.dev/" target="_blank" class="text-white">Daily Dev</a></li>
+                  <li><a href="https://stackoverflow.com/" target="_blank" class="text-white">Stack Overflow</a></li>
+                  <li><a href="https://www.linkedin.com" target="_blank" class="text-white">Linkedin</a></li>
+                  <li><a href="https://www.producthunt.com/" target="_blank" class="text-white">Product Hunt</a></li>
+                  <li><a href="" class="text-white"><br></a></li>
+                  
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--CODING PREP-->
+          <div class="col-sm-4 col-md-6 col-lg-3">
+            <div class="card text-bg-dark border-info">
+              <div class="card-body">
+                <h5 class="card-title">Start Coding Prep</h5>
+                <ul style="list-style-type: none;" class="card-text pt-2">
+                  <li><a href="https://www.geeksforgeeks.org/" target="_blank" class="text-white">GeeksForGeeks</a></li>
+                  <li><a href="https://takeuforward.org/" target="_blank" class="text-white">Take You Forward</a></li>
+                  <li><a href="https://www.interviewbit.com/practice/" target="_blank" class="text-white">InterviewBit</a></li>
+                  <li><a href="https://www.codechef.com/" target="_blank" class="text-white">CodeChef</a></li>
+                  <li><a href="https://leetcode.com/problemset/" target="_blank" class="text-white">LeetCode</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+          <!--UI/UX-->
+          <div class="col-sm-4 col-md-6 col-lg-3">
+            <div class="card text-bg-dark border-info">
+              <div class="card-body">
+                <h5 class="card-title">For UI/UX</h5>
+                <ul style="list-style-type: none;" class="card-text pt-2">
+                  <li><a href="https://www.easyui.pro/templates" target="_blank" class="text-white">Easy UI</a></li>
+                  <li><a href="https://magicui.design/" target="_blank" class="text-white">Magic UI</a></li>
+                  <li><a href="https://www.figma.com/files/team/1069274697763467632/recents-and-sharing?fuid=1069274692174126117" target="_blank" class="text-white">Figma</a></li>
+                  <li><a href="https://app.eraser.io/workspace/k2nNJrViYdoUNrBjRX0o" target="_blank" class="text-white">Eraser.io</a></li>
+                  <li><a href="https://whimsical.com/" target="_blank" class="text-white">Whimsical</a></li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--ABOUT-->
+<div style="height: 100px;"></div>
+<div id="about" class="pt-5">
+  <div class="container">
+    <div class="row justify-content">
+      <b class="text-white p-4" style="font-size:xxx-large;">About TechCompass</b>
+      <p class="text-white text-start px-3 fs-5">TechCompass is a premier platform dedicated to empowering individuals embarking on their tech journey. Whether you are a tech enthusiast just starting out, a first-year college student, or a recent high school graduate, TechCompass provides tailored roadmaps and comprehensive resources to guide you through various technology streams, including Web Development, DevOps, Data Science, and AI/ML.</p>
+
+      <p class="text-white text-start px-3 fs-5">In addition to structured learning paths, TechCompass offers invaluable pro tips for navigating the tech industry. This includes insights on coding platforms like Codeforces, CodeChef, HackerRank, LeetCode, and InterviewBit, along with advice on building a standout portfolio, skill assessments, and acquiring certifications. We also foster a vibrant community through Discord, Reddit and X channels, providing a network for collaboration and support. Stay engaged with the latest events, hackathons, study jams, and open-source contributions, and seize opportunities for internships to accelerate your career in technology with TechCompass.</p>
+        </div>
+      </div>
+    </div>
+
 
 {%endblock%}
