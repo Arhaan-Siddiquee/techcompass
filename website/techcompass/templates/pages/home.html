@@ -2,7 +2,6 @@
 
 {%block title %}Home {%endblock%}
 {% load static %}
-
 {%block body %}
 
 <!--NAVBAR-->
@@ -32,11 +31,33 @@
           <li class="nav-item">
             <a class="nav-link mx-4 px-3 fs-4" href="#about">About</a>
           </li>
+
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:index' %}">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item">
+              <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:login' %}">Login</a>
+            </li>
+          {% endif %}
           
         </ul>
       </div>
     </div>
   </nav>
+
+  <!--MESSAGES
+  {%if messages%}
+  {%for message in messages%}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {%endfor%}
+  {%endif%} -->
 
 <!--POSTER BOX-->
 <div id="top" class="d-flex justify-content-evenly">
