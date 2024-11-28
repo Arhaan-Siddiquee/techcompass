@@ -10,6 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+# IPconfig in cmd to use website on any device
+# add ip address to ALLOWED_HOSTS = ['*','IP_ADDRESS'] 
+
 from pathlib import Path
 import os
 
