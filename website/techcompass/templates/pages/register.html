@@ -6,7 +6,7 @@
   body{
     background-color: black;
   }
-.form-control:focus {
+#floatingInput:focus {
   border-color: rgba(83,240,251,1);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(83,240,251,1);
 }
@@ -15,12 +15,14 @@
 
 {% block body %}
 
+ 
+
 <!--IF USER ALREADY EXISTS-->
-{% if error %}
+<!-- {% if error %}
   <div>
     {{error}}
   </div>
-{% endif %}
+{% endif %} -->
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
   <div class="container">
@@ -74,14 +76,14 @@
         <!-- create password -->
         <div class="col-md-6">
           <div class="form-floating mb-3">
-            <input type="password" class="form-control bg-transparent text-white" id="floatingpassword" placeholder="password" name="password">
+            <input type="password" class="form-control bg-transparent text-white" id="floatingInput" placeholder="password" name="password">
             <label for="floatingpassword">Create Password</label>
           </div>
         </div>
         <!-- re-enter password -->
         <div class="col-md-6">
           <div class="form-floating mb-3">
-            <input type="password" class="form-control bg-transparent text-white" id="floatingpassword" placeholder="password" name="password1">
+            <input type="password" class="form-control bg-transparent text-white" id="floatingInput" placeholder="password" name="password1">
             <label for="floatingpassword">Re-enter Password</label>
           </div>
         </div>
@@ -89,6 +91,8 @@
 
       
       <div class="d-flex justify-content-center mt-4 mb-4"><button type="submit" class="btn text-black" style="width: 100px; align-content: center; background-color: rgba(83,240,251,1);">Sign Up</button></div>
+      <div class="d-flex justify-content-center mt-4 mb-4">Already have an account?  <a href="{% url 'techcompass:login' %}" class="link-info px-1">Login</a> </div>
+      
 
     </form>
   </div>
