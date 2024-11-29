@@ -3,6 +3,26 @@
 {%block title %}Home {%endblock%}
 {% load static %}
 {%block body %}
+{%block cssfiles%}
+<style>
+  .card #poster{
+    transition: .2.2s;
+  }
+  .card:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
+  }
+  #poster:hover{
+    transform: scale(1.2);
+  }
+  #navigation:hover{
+    opacity: 100%;
+    transform:scale(1.1);
+    color: rgba(83,240,251,1);
+  }
+</style>
+
+{%endblock%}
 
 <!--NAVBAR-->
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent ">
@@ -17,28 +37,28 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active mx-4 px-3 fs-4" aria-current="page" href="#">Home</a>
+            <a class="nav-link mx-4 px-3 fs-4" aria-current="page" href="#" id="navigation">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:roadmap' %}">Roadmaps</a>
+            <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:roadmap' %}" id="navigation">Roadmaps</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4 px-3 fs-4" href="#comm">Communities</a>
+            <a class="nav-link mx-4 px-3 fs-4" href="#comm" id="navigation">Communities</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4 px-3 fs-4" href="#events">Events</a>
+            <a class="nav-link mx-4 px-3 fs-4" href="#events" id="navigation">Events</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link mx-4 px-3 fs-4" href="#about">About</a>
+            <a class="nav-link mx-4 px-3 fs-4" href="#about" id="navigation">About</a>
           </li>
 
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:index' %}">Logout</a>
+              <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:index' %}" id="navigation">Logout</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:login' %}">Login</a>
+              <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:login' %}" id="navigation">Login</a>
             </li>
           {% endif %}
           
@@ -66,23 +86,23 @@
       <h1 style="color: white;">TechCompass
         <h3 class="text-white pt-3"><p style="display: block;">Navigating your path to future ready skills</p></h3>
       </h1></div>
-      <img src="{% static 'Icons/people-and-technology-removebg-preview.png' %}" id ="poster" alt="Poster" height="400px" style="padding-left: 15px; padding-top: 30px;">
+      <img src="{% static 'Icons/people-and-technology-removebg-preview.png' %}" id ="cartoon" alt="Poster" height="400px" style="padding-left: 15px; padding-top: 30px;">
     </div>
     <div class="container text-center">
       <div class="row">
-        <div class="col">
+        <div class="col" id="poster">
           <img src="{% static 'Icons/roadmap.svg' %}" alt="logo" height="50px">
           <p style="display: block; color: white; padding-top:5px;">Roadmaps</p>
         </div>
-        <div class="col">
+        <div class="col" id="poster">
           <img src="{% static 'Icons/Resource.svg' %}" alt="logo" height="50px">
           <p style="display: block; color: white; padding-top: 5px;">Resources</p>
         </div>
-        <div class="col">
+        <div class="col" id="poster">
           <img src="{% static 'Icons/communities.svg' %}" alt="logo" height="50px">
           <p style="display: block; color: white; padding-top: 5px;">Communities</p>
         </div>
-        <div class="col">
+        <div class="col" id="poster">
           <img src="{% static 'Icons/events.svg' %}" alt="logo" height="50px">
           <p style="display: block; color: white; padding-top: 5px;">Events</p>
         </div>
@@ -100,7 +120,7 @@
         <div class="row gy-3 my-3">
           <!--DISCORD-->
           <div class="col-sm-9 col-md-4 col-lg-4">
-            <div class="card text-bg-dark border-info">
+            <div class="card text-bg-dark border-info" style="width: 350px;">
               <div class="card-body">
                 <h5 class="card-title"><img src="{% static 'Icons/discord.png' %}" alt="logo" height="38px" class="px-2">Discord Servers</h5>
                 <ul style="list-style-type: none;" class="card-text pt-2">
@@ -117,7 +137,7 @@
           </div>
           <!--REDDIT-->
           <div class="col-sm-9 col-md-4 col-lg-4">
-            <div class="card text-bg-dark border-info">
+            <div class="card text-bg-dark border-info" style="width: 350px;">
               <div class="card-body">
                 <h5 class="card-title"><img src="{% static 'Icons/icons8-reddit-48.png' %}" alt="logo" height="38px" class="px-2">Reddit Servers</h5>
                 <ul style="list-style-type: none;" class="card-text pt-2">
@@ -134,7 +154,7 @@
           </div>
           <!--X-->
           <div class="col-sm-9 col-md-4 col-lg-4">
-            <div class="card text-bg-dark border-info">
+            <div class="card text-bg-dark border-info" style="width: 350px;">
               <div class="card-body">
                 <h5 class="card-title"><img src="{% static 'Icons/icons8-x-48.png' %}" alt="logo" height="38px" class="px-2">X Servers</h5>
                 <ul style="list-style-type: none;" class="card-text pt-2">
