@@ -4,13 +4,11 @@
 {% load static %}
 {%block body %}
 {%block cssfiles%}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 <style>
-  .card #poster{
-    transition: .2.2s;
-  }
-  .card:hover{
-    transform: scale(1.1);
-    box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
+  #poster{
+    transition: 0.2s ease-in-out;
   }
   #poster:hover{
     transform: scale(1.2);
@@ -20,15 +18,32 @@
     transform:scale(1.1);
     color: rgba(83,240,251,1);
   }
+  #cartoon{
+    display: block;
+  }
+  @media screen and (max-width: 768px){
+    #cartoon{
+      display: none;
+    }
+    
+  }
+  .card{
+    transition: 0.1s ease-in-out;
+  }
+  .card:hover{
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
+  }
+
 </style>
 
 {%endblock%}
 
 <!--NAVBAR-->
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent ">
+<nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-transparent ">
     <div class="container">
       <!--LOGO-->
-      <a class="navbar-brand px-5" href="#"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px"></a>
+      <a class="navbar-brand px-5" href="#"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px" class="logo"></a>
       <!--TOGGLE BTN-->
       <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -112,15 +127,15 @@
 <!--COMMUNITIES-->
 <div style="height: 100px;"></div>
 <div id="comm" class="pt-5">
-  <div class="container text-center">
+  <div class="container text-center align-items-center">
     <div class="row justify-content-center">
-      <b class="text-white" style="font-size:xxx-large;">Communities <img src="{% static 'Icons/communities.svg' %}" alt="logo" height="60px"></b>
-      <div class="fs-5 text-white pt-3">Join a dynamic coding community to connect, learn, and grow with passionate tech enthusiasts and professionals. Share your projects, learn in public, and seek referrals based on your achievements.</div>
+      <b class="text-white auto_show" style="font-size:xxx-large;">Communities <img src="{% static 'Icons/communities.svg' %}" alt="logo" height="60px"></b>
+      <div class="fs-5 text-white pt-3 auto_show">Join a dynamic coding community to connect, learn, and grow with passionate tech enthusiasts and professionals. Share your projects, learn in public, and seek referrals based on your achievements.</div>
       <div class="container">
         <div class="row gy-3 my-3">
           <!--DISCORD-->
-          <div class="col-sm-9 col-md-4 col-lg-4">
-            <div class="card text-bg-dark border-info" style="width: 350px;">
+          <div class="col auto_show">
+            <div class="card text-bg-dark border-info border-2" style="width: 350px;">
               <div class="card-body">
                 <h5 class="card-title"><img src="{% static 'Icons/discord.png' %}" alt="logo" height="38px" class="px-2">Discord Servers</h5>
                 <ul style="list-style-type: none;" class="card-text pt-2">
@@ -136,8 +151,8 @@
             </div>
           </div>
           <!--REDDIT-->
-          <div class="col-sm-9 col-md-4 col-lg-4">
-            <div class="card text-bg-dark border-info" style="width: 350px;">
+          <div class="col auto_show">
+            <div class="card text-bg-dark border-info border-2" style="width: 350px;">
               <div class="card-body">
                 <h5 class="card-title"><img src="{% static 'Icons/icons8-reddit-48.png' %}" alt="logo" height="38px" class="px-2">Reddit Servers</h5>
                 <ul style="list-style-type: none;" class="card-text pt-2">
@@ -153,8 +168,8 @@
             </div>
           </div>
           <!--X-->
-          <div class="col-sm-9 col-md-4 col-lg-4">
-            <div class="card text-bg-dark border-info" style="width: 350px;">
+          <div class="col auto_show">
+            <div class="card text-bg-dark border-info border-2" style="width: 350px;">
               <div class="card-body">
                 <h5 class="card-title"><img src="{% static 'Icons/icons8-x-48.png' %}" alt="logo" height="38px" class="px-2">X Servers</h5>
                 <ul style="list-style-type: none;" class="card-text pt-2">
@@ -181,13 +196,13 @@
 <div id="events" class="pt-5">
   <div class="container text-center">
     <div class="row justify-content-center">
-      <b class="text-white" style="font-size:xxx-large;">Events and Tips <img src="{% static 'Icons/events.svg' %}" alt="logo" height="60px"></b>
-      <div class="fs-5 text-white pt-3">Discover the latest events and tips to help you stay informed and engaged</div>
+      <b class="text-white auto_show" style="font-size:xxx-large;">Events and Tips <img src="{% static 'Icons/events.svg' %}" alt="logo" height="60px"></b>
+      <div class="fs-5 text-white pt-3 auto_show">Discover the latest events and tips to help you stay informed and engaged</div>
       <div class="container">
         <div class="row gy-3 my-3">
           <!--HACkATHONS-->
-          <div class="col-sm-4 col-md-6 col-lg-3">
-            <div class="card text-bg-dark border-info">
+          <div class="col-sm-4 col-md-6 col-lg-3 auto_show">
+            <div class="card text-bg-dark border-info border-2">
               <div class="card-body">
                 <h5 class="card-title">Find Hackathons</h5>
                 <ul style="list-style-type: none;" class="card-text pt-2">
@@ -202,8 +217,8 @@
             </div>
           </div>
           <!--STAY UPDATED-->
-          <div class="col-sm-4 col-md-6 col-lg-3">
-            <div class="card text-bg-dark border-info">
+          <div class="col-sm-4 col-md-6 col-lg-3 auto_show">
+            <div class="card text-bg-dark border-info border-2">
               <div class="card-body">
                 <h5 class="card-title">Stay Updated</h5>
                 <ul style="list-style-type: none; align-items: center;" class="card-text pt-2">
@@ -219,8 +234,8 @@
             </div>
           </div>
           <!--CODING PREP-->
-          <div class="col-sm-4 col-md-6 col-lg-3">
-            <div class="card text-bg-dark border-info">
+          <div class="col-sm-4 col-md-6 col-lg-3 auto_show">
+            <div class="card text-bg-dark border-info border-2">
               <div class="card-body">
                 <h5 class="card-title">Start Coding Prep</h5>
                 <ul style="list-style-type: none;" class="card-text pt-2">
@@ -235,8 +250,8 @@
             </div>
           </div>
           <!--UI/UX-->
-          <div class="col-sm-4 col-md-6 col-lg-3">
-            <div class="card text-bg-dark border-info">
+          <div class="col-sm-4 col-md-6 col-lg-3 auto_show">
+            <div class="card text-bg-dark border-info border-2">
               <div class="card-body">
                 <h5 class="card-title">For UI/UX</h5>
                 <ul style="list-style-type: none;" class="card-text pt-2">
@@ -261,10 +276,10 @@
 <div id="about" class="pt-5">
   <div class="container">
     <div class="row justify-content">
-      <b class="text-white p-4" style="font-size:xxx-large;">About TechCompass</b>
-      <p class="text-white text-start px-3 fs-5">TechCompass is a premier platform dedicated to empowering individuals embarking on their tech journey. Whether you are a tech enthusiast just starting out, a first-year college student, or a recent high school graduate, TechCompass provides tailored roadmaps and comprehensive resources to guide you through various technology streams, including Web Development, DevOps, Data Science, and AI/ML.</p>
+      <b class="text-white p-4 auto_show" style="font-size:xxx-large;">About TechCompass</b>
+      <p class="text-white text-start px-3 fs-5 auto_show">TechCompass is a premier platform dedicated to empowering individuals embarking on their tech journey. Whether you are a tech enthusiast just starting out, a first-year college student, or a recent high school graduate, TechCompass provides tailored roadmaps and comprehensive resources to guide you through various technology streams, including Web Development, DevOps, Data Science, and AI/ML.</p>
 
-      <p class="text-white text-start px-3 fs-5">In addition to structured learning paths, TechCompass offers invaluable pro tips for navigating the tech industry. This includes insights on coding platforms like Codeforces, CodeChef, HackerRank, LeetCode, and InterviewBit, along with advice on building a standout portfolio, skill assessments, and acquiring certifications. We also foster a vibrant community through Discord, Reddit and X channels, providing a network for collaboration and support. Stay engaged with the latest events, hackathons, study jams, and open-source contributions, and seize opportunities for internships to accelerate your career in technology with TechCompass.</p>
+      <p class="text-white text-start px-3 fs-5 auto_show">In addition to structured learning paths, TechCompass offers invaluable pro tips for navigating the tech industry. This includes insights on coding platforms like Codeforces, CodeChef, HackerRank, LeetCode, and InterviewBit, along with advice on building a standout portfolio, skill assessments, and acquiring certifications. We also foster a vibrant community through Discord, Reddit and X channels, providing a network for collaboration and support. Stay engaged with the latest events, hackathons, study jams, and open-source contributions, and seize opportunities for internships to accelerate your career in technology with TechCompass.</p>
         </div>
       </div>
     </div>

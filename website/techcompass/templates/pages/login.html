@@ -4,6 +4,8 @@
 
 
 {% block cssfiles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 <style>
   body{
     background-color: black;
@@ -12,6 +14,31 @@
   border-color: rgba(83,240,251,1);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(83,240,251,1);
 }
+.logo{
+   position: relative;
+   font-size: 20em;
+   text-shadow: 0 0 50px #0f0, 
+                  0 0 100px #0f0, 
+                  0 0 150px #0f0, 
+                  0 0 200px #0f0, 
+                  0 0 250px #0f0;
+   animation: animate 5s linear infinite;
+}
+
+.btn:hover{
+    opacity: 100%;
+    transform:scale(1.04);
+    box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
+  }
+
+#login:hover{
+    opacity: 100%;
+    transform:scale(1.02);
+  }
+#login{
+    transition: .2s ease-in-out;
+  }
+  
 </style>
 {%endblock%}
 
@@ -31,7 +58,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
       <div class="container">
         <!--LOGO-->
-        <a class="navbar-brand px-5" href="{% url 'techcompass:index' %}"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px"></a>
+        <a class="navbar-brand px-5 logo" href="{% url 'techcompass:index' %}"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px"></a>
         </div>
       </div>
     </nav>
@@ -42,7 +69,8 @@
     <br>
     <br>
     <br>
-    <div class="container mt-4 px-5 pt-1 border rounded-5" style="max-width: 80%; box-shadow: 0px 9px 30px 0px rgba(83,240,251,1);">
+    
+    <div class="container mt-4 px-5 pt-1 border rounded-5 " style="max-width: 80%; box-shadow: 0px 5px 27px 0px rgba(83,240,251,1);" id="login">
       <h2 class="text-center mt-4 mb-5 text-white">Login</h2>
       <form class="text-white" method="post" action="{% url 'techcompass:login' %}">
         {% csrf_token %}

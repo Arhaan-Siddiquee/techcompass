@@ -19,6 +19,11 @@
     transform:scale(1.1);
     color: rgba(83,240,251,1);
   }
+  .btn:hover{
+    opacity: 100%;
+    transform:scale(1.04);
+    box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
+  }
 </style>
 
 {%endblock%}
@@ -28,7 +33,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent ">
     <div class="container">
       <!--LOGO-->
-      <a class="navbar-brand px-5" href="{% url 'techcompass:index' %}"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px"></a>
+      <a class="navbar-brand px-5" href="{% url 'techcompass:index' %}"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px" class="logo"></a>
       <!--TOGGLE BTN-->
       <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -37,7 +42,7 @@
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active mx-4 px-3 fs-4" aria-current="page" href="#" id="navigation">Home</a>
+            <a class="nav-link mx-4 px-3 fs-4" aria-current="page" href="#" id="navigation">Home</a>
           </li>
           <li class="nav-item dropdown-center">
             <a class="nav-link dropdown-toggle mx-4 px-3 fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navigation">
@@ -67,7 +72,7 @@
             {% if user.is_authenticated %}
               <a href="{% url 'techcompass:logout' %}" class="btn btn-outline-info mx-4 px-3 fs-5" role="button">Logout</a>
             {% else %}
-              <a href="{% url 'techcompass:login' %}" target="_blank" class="btn btn-outline-info mx-4 px-3 fs-5" role="button">Login/Sign Up</a>
+              <a href="{% url 'techcompass:login' %}" class="btn btn-outline-info mx-4 px-3 fs-5" role="button">Login/Sign Up</a>
             {% endif %}
           </li>
           
