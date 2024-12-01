@@ -35,6 +35,51 @@
     box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
   }
 
+  .rotate span {
+    color: white;
+    display: inline-flex;
+    animation: rotate 3.5s linear infinite;
+}
+@keyframes rotate {
+    0%,
+    75% {
+        transform: rotateY(360deg);
+    }
+}
+.nine span:nth-of-type(1) {
+    animation-delay: 0.2s;
+}
+.nine span:nth-of-type(2) {
+    animation-delay: 0.4s;
+}
+.nine span:nth-of-type(3) {
+    animation-delay: 0.6s;
+}
+.nine span:nth-of-type(4) {
+    animation-delay: 0.8s;
+}
+.nine span:nth-of-type(5) {
+    animation-delay: 1s;
+}
+.nine span:nth-of-type(6) {
+    animation-delay: 1.2s;
+}
+.nine span:nth-of-type(7) {
+    animation-delay: 1.4s;
+}
+.nine span:nth-of-type(8) {
+    animation-delay: 1.6s;
+}
+.nine span:nth-of-type(9) {
+    animation-delay: 1.8s;
+}
+.nine span:nth-of-type(10) {
+    animation-delay: 2.0s;
+}
+.nine span:nth-of-type(11) {
+    animation-delay: 2.2s;
+}
+
 </style>
 
 {%endblock%}
@@ -98,9 +143,26 @@
 <div id="top" class="d-flex justify-content-evenly">
     <div class="m-5">
       <div style="height: 150px;"></div>
-      <h1 style="color: white;">TechCompass
-        <h3 class="text-white pt-3"><p style="display: block;">Navigating your path to future ready skills</p></h3>
-      </h1></div>
+      <div class="wrapper nine">
+        <div>
+            <h1 class="rotate">
+                <span>T</span>
+                <span>e</span>
+                <span>c</span>
+                <span>h</span>
+                <span>C</span>
+                <span>o</span>
+                <span>m</span>
+                <span>p</span>
+                <span>a</span>
+                <span>s</span>
+                <span>s</span>
+
+            </h1>
+        </div>
+    </div>
+        <h4 class="text-white pt-3">Navigating your path to future ready skills</h4>
+      </div>
       <img src="{% static 'Icons/people-and-technology-removebg-preview.png' %}" id ="cartoon" alt="Poster" height="400px" style="padding-left: 15px; padding-top: 30px;">
     </div>
     <div class="container text-center">
