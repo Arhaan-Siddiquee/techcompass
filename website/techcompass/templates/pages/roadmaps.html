@@ -4,16 +4,6 @@
 {%block cssfiles%}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 <style>
-  /* .card #poster{
-    transition: .2.2s;
-  }
-  .card:hover{
-    transform: scale(1.1);
-    box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
-  }
-  #poster:hover{
-    transform: scale(1.2); id="navigation"
-  } */
   #navigation:hover{
     opacity: 100%;
     transform:scale(1.1);
@@ -24,6 +14,54 @@
     transform:scale(1.04);
     box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
   }
+  .rotate span {
+    color: white;
+    display: inline-flex;
+    animation: rotate 3.5s linear infinite;
+}
+@keyframes rotate {
+    0%,
+    75% {
+        transform: rotateY(360deg);
+    }
+}
+.nine span:nth-of-type(1) {
+    animation-delay: 0.2s;
+}
+.nine span:nth-of-type(2) {
+    animation-delay: 0.4s;
+}
+.nine span:nth-of-type(3) {
+    animation-delay: 0.6s;
+}
+.nine span:nth-of-type(4) {
+    animation-delay: 0.8s;
+}
+.nine span:nth-of-type(5) {
+    animation-delay: 1s;
+}
+.nine span:nth-of-type(6) {
+    animation-delay: 1.2s;
+}
+.nine span:nth-of-type(7) {
+    animation-delay: 1.4s;
+}
+.nine span:nth-of-type(8) {
+    animation-delay: 1.6s;
+}
+.poster{
+    transition: transform 0.5s ease-in-out;
+}
+.poster:hover {
+    transform: scale(1.1);
+}
+#card{
+    transition: transform 0.3s ease-in-out;
+}
+#card:hover {
+    transform: scale(1.05);
+    box-shadow: 5px 25px 25px 0 rgba(0, 255, 225, 0.2);
+}
 </style>
 
 {%endblock%}
@@ -80,5 +118,123 @@
       </div>
     </div>
   </nav>
+
+  <div style="height: 100px;"></div>
+<!--HERO SECTION-->
+<div class="container text-center text-white">
+  <div class="row">
+    <div class="col align-text-center">
+      <br><br><br><br><br>
+      <h1 class="rotate">
+        <span>R</span>
+              <span>o</span>
+              <span>a</span>
+              <span>d</span>
+              <span>m</span>
+              <span>a</span>
+              <span>p</span>
+              <span>s</span>
+      </h1>
+      <p class="fs-3">Choose your path to success</p>
+    </div>
+    <div class="col">
+      <img src="{% static 'Icons/roadmap.svg' %}" alt="roadmap" height="400px" class="poster">
+    </div>
+  </div>
+
+<!--ROADMAP-->
+<div style="height: 200px;"></div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card text-white bg-black border-2 border-info mx-4" id="card">
+      <div class="card-body ">
+        <h5 class="card-title">Front End Development</h5>
+        <p class="card-text">Front-end development focuses on building user interfaces for responsive, interactive web applications.</p>
+        <a href="#" class="btn btn-dark btn-outline-info">Go to resources</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-white bg-black border-2 border-info mx-4" id="card">
+      <div class="card-body">
+        <h5 class="card-title">Back End Development</h5>
+        <p class="card-text">Back-end development manages servers, databases and APIs to keep websites running smoothly.</p>
+        <a href="#" class="btn btn-dark btn-outline-info">Go to resources</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-white bg-black border-2 border-info mx-4" id="card">
+      <div class="card-body">
+        <h5 class="card-title">AI/ML</h5>
+        <p class="card-text">AI/ML involves creating systems that learn from data to make predictions and automate tasks.</p>
+        <a href="#" class="btn btn-dark btn-outline-info">Go to resources</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="height: 50px;"></div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card text-white bg-black border-2 border-info mx-4" id="card">
+      <div class="card-body ">
+        <h5 class="card-title">DSA</h5>
+        <p class="card-text">DSA focuses on using data structures and algorithms to solve problems efficiently in programming.</p>
+        <a href="#" class="btn btn-dark btn-outline-info">Go to resources</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-white bg-black border-2 border-info mx-4" id="card">
+      <div class="card-body">
+        <h5 class="card-title">Data Science</h5>
+        <p class="card-text">Data science uses data analysis, statistics, and machine learning to extract insights and make decisions.</p>
+        <a href="#" class="btn btn-dark btn-outline-info">Go to resources</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-white bg-black border-2 border-info mx-4" id="card">
+      <div class="card-body">
+        <h5 class="card-title">Blockchain</h5>
+        <p class="card-text">Blockchain is a secure way to store and share information or transactions across many computers without a central authority.</p>
+        <a href="#" class="btn btn-dark btn-outline-info">Go to resources</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="height: 50px;"></div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="card text-white bg-black border-2 border-info mx-4" id="card">
+      <div class="card-body ">
+        <h5 class="card-title">Cybersecurity</h5>
+        <p class="card-text">Cybersecurity protects computers, networks, and data from unauthorized access, attacks, and damage.</p>
+        <a href="#" class="btn btn-dark btn-outline-info">Go to resources</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-white bg-black border-2 border-info mx-4" id="card">
+      <div class="card-body">
+        <h5 class="card-title">DevOps</h5>
+        <p class="card-text">DevOps combines software development and IT operations to improve collaboration and speed up software launches.</p>
+        <a href="#" class="btn btn-dark btn-outline-info">Go to resources</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-white bg-black border-2 border-info mx-4" id="card">
+      <div class="card-body">
+        <h5 class="card-title">Data Analyst</h5>
+        <p class="card-text">Data analysts collect, process, and analyze data to help businesses make informed decisions.</p>
+        <a href="#" class="btn btn-dark btn-outline-info">Go to resources</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="height: 200px;"></div>
+
 
 {%endblock%}
