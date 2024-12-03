@@ -114,7 +114,16 @@
 
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link mx-4 px-3 fs-4" href="{% url 'techcompass:index' %}" id="navigation">Logout</a>
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-info mx-4 px-3 fs-5 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  Profile
+                </button>
+                <ul class="dropdown-menu text-bg-dark">
+                  <li><a class="dropdown-item text-white bg-dark" href="#">Dashboard</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:logout' %}">Logout</a></li>
+                </ul>
+              </div>
             </li>
           {% else %}
             <li class="nav-item">

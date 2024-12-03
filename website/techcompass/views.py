@@ -6,6 +6,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -18,14 +19,15 @@ def roadmap_view(request):
 	return render(request, 'pages/roadmaps.html')
 
 def login_user(request):
+	if request.user.is_authenticated:
+		return redirect('/')
 	if request.method == "POST":
 		username = request.POST['username']
 		password = request.POST['password']
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			messages.success(request, ('You have been logged in'))
-			return redirect('/')
+			return redirect('/', {'success': 'You have been logged in'})
 		else:
 			messages.error(request, ('Invalid username or password'))
 			return redirect('/login')
@@ -55,3 +57,47 @@ def register_user(request):
 		return redirect('/')	
 	else:
 		return render(request, 'pages/register.html')
+
+@login_required(login_url='/login')
+def frontend_view(request):
+
+	return render(request, 'pages/frontend.html')
+
+@login_required(login_url='/login')
+def backend_view(request):
+	return render(request, 'pages/backend.html')
+
+@login_required(login_url='/login')
+def aiml_view(request):
+		
+	return render(request, 'pages/aiml.html')
+
+@login_required(login_url='/login')
+def blockchain_view(request):
+	
+	return render(request, 'pages/blockchn.html')
+
+@login_required(login_url='/login')
+def cybersec_view(request):
+	
+	return render(request, 'pages/cybersec.html')
+
+@login_required(login_url='/login')
+def dsa_view(request):
+		
+	return render(request, 'pages/dsa.html')
+
+@login_required(login_url='/login')
+def devops_view(request):
+		
+	return render(request, 'pages/devops.html')
+
+@login_required(login_url='/login')
+def datasci_view(request):
+
+	return render(request, 'pages/datasci.html')
+
+@login_required(login_url='/login')
+def datanalyst_view(request):
+
+	return render(request, 'pages/dataanalys.html')
