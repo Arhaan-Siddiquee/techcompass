@@ -3,6 +3,12 @@
    padding: 0;  
  }
 
+ #navigation:hover{
+   opacity: 100%;
+   transform:scale(1.1);
+   color: rgba(83,240,251,1);
+ }
+
 .black{
    background: black;
 }
