@@ -1,4 +1,4 @@
-{% extends 'layouts/road.html' %}
+{% extends 'layouts/base.html' %}
 {%block title%}FrontEnd{%endblock%}
 {% load static %}
 {%block cssfiles%}
@@ -15,6 +15,222 @@
 {%endblock%}
 {%block body%}
 
+<!--NAVBAR-->
+<nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-transparent ">
+  <div class="container">
+    <!--LOGO-->
+    <a class="navbar-brand px-5" href="{% url 'techcompass:index' %}"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px" class="logo"></a>
+    <!--TOGGLE BTN-->
+    <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--SIDEBAR-->
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link mx-4 px-3 fs-4" aria-current="page" href="{% url 'techcompass:index' %}" id="navigation">Home</a>
+        </li>
+        <li class="nav-item dropdown-center">
+          <a class="nav-link dropdown-toggle mx-4 px-3 fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navigation">
+            Explore Roadmaps
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end text-bg-dark">
+            <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:frontend' %}">Front End Development</a></li>
+              <hr class="dropdown-divider">
+            <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:backend' %}">Back End Development</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:aiml' %}">AI/ML</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:dsa' %}">DSA</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:blockchain' %}">Blockchain</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:cybersec' %}">Cybersecurity</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:devops' %}">DevOps</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:datasci' %}">Data Science</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:datanalyst' %}">Data Analyst</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown-center">
+          <a class="nav-link dropdown-toggle mx-4 px-3 fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navigation">
+            Frontend
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end text-bg-dark">
+            <li><a class="dropdown-item text-white bg-dark" href="#html">HTML</a></li>
+              <hr class="dropdown-divider">
+            <li><a class="dropdown-item text-white bg-dark" href="#css">CSS</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item text-white bg-dark" href="#js">JavaScript</a></li>
+              <hr class="dropdown-divider">
+              <li><a class="dropdown-item text-white bg-dark" href="#getcertified">Get Certified</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <div class="btn-group pt-1">
+            <a href="#" class="btn btn-outline-info mx-4 px-3 fs-5">Download Roadmap</a>
+          </div>
+        </li>
+        <li class="nav-item">
+            <div class="btn-group pt-1">
+              <button type="button" class="btn btn-outline-info mx-4 px-3 fs-5 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+              </button>
+              <ul class="dropdown-menu text-bg-dark">
+                <li><a class="dropdown-item text-white bg-dark" href="#">Dashboard</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:logout' %}">Logout</a></li>
+              </ul>
+            </div>
+        </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
+<div style="height: 100px;"></div>
+
+<!--MAIN CONTENT-->
+<div class="container pt-4 pb-2">
+  <div class=" fs-4 text-white text-center">Your Progress</div>
+  <div class="progress bg-dark" role="progressbar" aria-label="Success example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+    <div class="progress-bar bg-success" style="width: 10%"></div>
+  </div>
+  <div class="text-white text-center">10% completed</div>
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <b class="text-white p-4" style="font-size:xxx-large;">Front End Development</b>
+      <!-- <b class="text-white p-4" style="font-size:x-large;">Earn a badge by going through the resources</b> -->
+      <p class="text-white fs-5">Front-end development focuses on building the visual and interactive elements of a website or web application that users interact with directly. It involves creating the layout, design, and user experience using technologies like HTML (to structure content), CSS (to style and format elements), and JavaScript (to add interactivity and functionality). Front-end developers ensure websites are responsive, adapting seamlessly to various devices and screen sizes. They often use frameworks and libraries like React, Angular, and Bootstrap to streamline development and maintain consistency.</p>
+
+    <p class="text-white fs-5">In addition to coding, front-end developers work on optimizing performance, improving accessibility, and ensuring cross-browser compatibility. Tools like version control (e.g., Git), build systems, and  fs-5debugging utilities aid in efficient workflows. The goal of front-end development is to create intuitive, visually appealing interfaces that provide a seamless and engaging experience for users. It bridges design concepts with functional code to bring ideas to life on the web.</p>
+    </div>
+</div>
+<div style="height: 40px;"></div>
+<hr class="border border-info border-2">
+
+<!--HTML-->
+<div style="height: 50px;"></div>
+<div id = "html" class="pt-5">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <b class="text-white p-4" style="font-size:xxx-large;">HTML</b>
+      <p class="text-white fs-5">HTML (HyperText Markup Language) is the foundational language for creating and structuring web pages. It uses a system of tags enclosed in angle brackets to define elements such as headings, paragraphs, images, links, lists, and more. These tags provide structure and meaning to the content, which web browsers interpret and render for users. HTML supports attributes for adding extra information to elements, like styles, IDs, or links. It is often used alongside CSS for styling and JavaScript for interactivity, forming the core technologies of the web. HTML ensures that content is accessible and visually consistent across devices and browsers.</p>
+      <div class="pt-4">
+        <div class="text-center pb-4 text-white"><a class="btn btn-outline-info px-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsehtml" aria-expanded="false" aria-controls="collapsehtml">
+          Best Youtube Videos &#x25BC;
+      </a></div>
+  
+      <div class="collapse" id="collapsehtml">
+          <div class="container text-center">
+              <div class="row border-1 border-info">
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/kUMe1FH4CHE?si=ftD3bF8tG7mPLgal" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-4">Video Credits: freecodecamp</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/k2DSi1zGEc8?si=XHRR9lxItGdOWT9L" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: CodeWithHarry</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/HcOc7P5BMi4?si=UfqwKSeipzvab_98" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: Apna College</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/HD13eq_Pmp8?si=fHQNDlYf2tWIEzS7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: Bro Code</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/pQN-pnXPaVg?si=65hKhdEqxkPVi3n8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: freecodecamp</p></div></div>
+              </div>
+            </div>
+      </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="form-check text-white">
+  <input class="form-check-input bg-info" type="checkbox" value="" id="flexCheckDefault" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <label class="form-check-label" for="flexCheckDefault">
+    Mark as Complete</label>
+</div>
+<div style="height: 40px;"></div>
+<hr class="border border-info border-2">
+
+<!--CSS-->
+<div style="height: 50px;"></div>
+<div id = "css" class="pt-5">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <b class="text-white p-4" style="font-size:xxx-large;">CSS</b>
+      <p class="text-white fs-5">CSS (Cascading Style Sheets) is a stylesheet language used to control the presentation and design of HTML elements on a web page. It allows developers to apply styles such as colors, fonts, spacing, layouts, and animations to enhance the visual appeal and user experience. CSS follows a rule-based syntax, with selectors targeting HTML elements and declarations defining how they should be styled. It supports responsive design, enabling websites to adapt to various devices and screen sizes. CSS can be written inline, internally within an HTML document, or externally in separate files, promoting reusability and consistent design across multiple pages.</p>
+      <div class="pt-4">
+        <div class="text-center pb-4 text-white"><a class="btn btn-outline-info px-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsecss" aria-expanded="false" aria-controls="collapsecss">
+          Best Youtube Videos &#x25BC;
+      </a></div>
+  
+      <div class="collapse" id="collapsecss">
+          <div class="container text-center">
+              <div class="row border-1 border-info">
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/OXGznpKZ_sA?si=sQC94Wb--ScpRWM0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-4">Video Credits: freecodecamp</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/Edsxf_NBFrw?si=25lheg3MFrOLPLWp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: CodeWithHarry</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/ESnrn1kAD4E?si=mZ2NryVd6Y8PEYLb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: Apna College</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/wRNinF7YQqQ?si=kJBGKj67tuOAbqz3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: Bro Code</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/1Rs2ND1ryYc?si=y5I3ndbEOFMeuzVM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: freecodecamp</p></div></div>
+              </div>
+            </div>
+      </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="form-check text-white">
+  <input class="form-check-input bg-info" type="checkbox" value="" id="flexCheckDefault" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <label class="form-check-label" for="flexCheckDefault">
+    Mark as Complete</label>
+</div>
+<div style="height: 40px;"></div>
+<hr class="border border-info border-2">
+
+<!--JS-->
+<div style="height: 50px;"></div>
+<div id = "js" class="pt-5">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <b class="text-white p-4" style="font-size:xxx-large;">JavaScript</b>
+      <p class="text-white fs-5">JavaScript (JS) is a versatile programming language that enables dynamic and interactive functionality on websites. It allows developers to manipulate HTML and CSS in real-time, creating features like form validation, animations, dropdown menus, and interactive maps. JavaScript runs on the client side in web browsers, ensuring fast responses to user actions without reloading the page. It supports frameworks and libraries like React, Angular, and jQuery for streamlined development. JS is also used server-side with environments like Node.js, making it a full-stack solution. Its flexibility and extensive ecosystem make JavaScript a cornerstone of modern web development.</p>
+      <div class="pt-4">
+        <div class="text-center pb-4 text-white"><a class="btn btn-outline-info px-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapsejs" aria-expanded="false" aria-controls="collapsejs">
+          Best Youtube Videos &#x25BC;
+      </a></div>
+  
+      <div class="collapse" id="collapsejs">
+          <div class="container text-center">
+              <div class="row border-1 border-info">
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/PkZNo7MFNFg?si=tCNkq4ohy3EUUrGN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-4">Video Credits: freecodecamp</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/8dWL3wF_OMw?si=zwt3F44dzOZ_KY53" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: Bro Code</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=0vUZxldzG-DN6ynI&amp;list=PLGjplNEQ1it_oTvuLRNqXfz_v_0pq6unW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: Apna College</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/lfmg-EJ8gm4?si=b8goXUPNWg7aQJQc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: Bro Code</p></div></div>
+                <div class="col"><div><iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?si=_xCP7iEj0vvyz3Wi&amp;list=PLu0W_9lII9ahR1blWXxgSlL4y9iQBnLpR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-3">Video Credits: CodeWithHarry</p></div></div>
+              </div>
+            </div>
+      </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="form-check text-white">
+  <input class="form-check-input bg-info" type="checkbox" value="" id="flexCheckDefault" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  <label class="form-check-label" for="flexCheckDefault">
+    Mark as Complete</label>
+</div>
+
+<div style="height: 40px;"></div>
+<hr class="border border-info border-2">
+
+<!--GET CERTIFIED-->
+<div style="height: 50px;"></div>
+<div id = "getcertified" class="pt-5">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <b class="text-white p-4" style="font-size:xxx-large;">Certifications</b>
+      <p class="text-white fs-5">Here are the certification programmes for the front end development offered by some of the popular websites/companies. By earning a certification, you can demonstrate your ability to build responsive, interactive, and visually appealing websites-skills highly sought after by employers worldwide.</p>
+      </div>
+        </div>
+    </div>
+
+</div>
+
+<div style="height: 100px;"></div>
 
 {%endblock%}
