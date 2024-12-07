@@ -101,3 +101,8 @@ def datasci_view(request):
 def datanalyst_view(request):
 
 	return render(request, 'pages/dataanalys.html')
+
+@login_required(login_url='/login')
+def dashboard_view(request):
+
+	return render(request, 'pages/dashboard.html')

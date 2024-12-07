@@ -19,6 +19,7 @@ urlpatterns = [
     path('devops', views.devops_view, name='devops'),
     path('datasci', views.datasci_view, name='datasci'),
     path('datanalyst', views.datanalyst_view, name='datanalyst'),
+    path('dashboard', views.dashboard_view, name='dashboard'),
 
     
 ]
