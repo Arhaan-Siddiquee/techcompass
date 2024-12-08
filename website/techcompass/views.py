@@ -34,6 +34,9 @@ def login_user(request):
 	else:
 		return render(request, 'pages/login.html')
 	
+# def reset_password(request):
+# 	return render(request, 'pages/reset_password.html')
+
 def logout_user(request):
 	logout(request)
 	messages.success(request, ('You have been logged out'))

@@ -67,3 +67,8 @@ nav{
      transform: translateY(0) scale(1);
    }
  }
+
+ iframe:hover{
+   transform: scale(1.1);
+   box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
+ }

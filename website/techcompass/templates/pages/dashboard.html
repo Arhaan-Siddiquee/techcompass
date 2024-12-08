@@ -3,7 +3,19 @@
 {% load static %}
 {% block cssfiles %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+<style>
+  .btn:hover{
+    opacity: 100%;
+    transform:scale(1.04);
+    box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
+  }
+  
+  #badge:hover{
+    opacity: 100%;
+    transform:scale(1.1);
+    box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
+  }
+</style>
 {%endblock%}
 
 {% block body %}
@@ -48,8 +60,8 @@
   <!-- Profile Section -->
   <div class="card mb-4 shadow-sm bg-black text-white">
     <div class="card-body text-center">
-      <img src="https://via.placeholder.com/150" alt="Profile Picture" class="rounded-circle mb-3" style="width: 150px;">
-      <h3 class="card-title"> Welcome, {{user.username}}</h3>
+      <img src="{% static 'Icons/avatar.png' %}" alt="Profile Picture" class="rounded-circle mb-3" style="height:200px; box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);">
+      <h3 class="card-title"> Welcome, {{user.first_name}}</h3>
     </div>
   </div>
 
@@ -59,12 +71,84 @@
       <div class="col-md-4 col-sm-6 mb-3">
         <div class="card text-center shadow-sm bg-black text-white">
           <div class="card-body">
-            <img src="{% static 'Icons/frontendbdg.svg' %}" alt="Badge" class="img-fluid mb-2" style="height:150px">
+            <img src="{% static 'Icons/frontendbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
             <h5 class="card-title">Front End Development</h5>
           </div>
         </div>
       </div>
       <!-- Repeat Badge Cards -->
+      <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card text-center shadow-sm bg-black text-white">
+          <div class="card-body">
+            <img src="{% static 'Icons/backendbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
+            <h5 class="card-title">Back End Development</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card text-center shadow-sm bg-black text-white">
+          <div class="card-body">
+            <img src="{% static 'Icons/dsabdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
+            <h5 class="card-title">DSA</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card text-center shadow-sm bg-black text-white">
+          <div class="card-body">
+            <img src="{% static 'Icons/aimlbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
+            <h5 class="card-title">AI/ML</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card text-center shadow-sm bg-black text-white">
+          <div class="card-body">
+            <img src="{% static 'Icons/cybersecbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
+            <h5 class="card-title">Cybersecurity</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card text-center shadow-sm bg-black text-white">
+          <div class="card-body">
+            <img src="{% static 'Icons/datanalybdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
+            <h5 class="card-title">Data Analyst</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card text-center shadow-sm bg-black text-white">
+          <div class="card-body">
+            <img src="{% static 'Icons/devopsbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
+            <h5 class="card-title">DevOps</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card text-center shadow-sm bg-black text-white">
+          <div class="card-body">
+            <img src="{% static 'Icons/datascibdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
+            <h5 class="card-title">Data Science</h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 mb-3">
+        <div class="card text-center shadow-sm bg-black text-white">
+          <div class="card-body">
+            <img src="{% static 'Icons/blockchainbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
+            <h5 class="card-title">Blockchain</h5>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 

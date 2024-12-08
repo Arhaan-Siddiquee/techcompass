@@ -9,6 +9,7 @@ urlpatterns = [
     path('roadmap', views.roadmap_view, name='roadmap'),
     path('login', views.login_user, name='login'),
     path('logout', views.logout_user, name='logout'),
+    # path('reset_password', views.reset_password, name='reset_password'),
     path('register', views.register_user, name='register'),
     path('frontend', views.frontend_view, name='frontend'),
     path('backend', views.backend_view, name='backend'),
