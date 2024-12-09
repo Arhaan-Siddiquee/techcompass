@@ -1,12 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 
+
+def validate_svg(file):
+    if not file.name.endswith('.svg'):
+        raise ValidationError(u'Error message')
 
 class Roadmap(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    #image = models.ImageField(upload_to='roadmaps/')
+    badge = models.FileField(upload_to='badges/',blank=True,null=True,validators=[validate_svg])
     created_at = models.DateTimeField(auto_now_add=True)
     #updated_at = models.DateTimeField(auto_now=True)
     courses_provided = models.ManyToManyField('Course', related_name='roadmaps', blank=True)

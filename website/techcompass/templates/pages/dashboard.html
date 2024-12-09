@@ -77,87 +77,18 @@
   <div class="mb-4 text-white">
     <h4>Earned Badges</h4>
     <div class="row">
+      {% for completed in completed_roadmaps %}
       <div class="col-md-4 col-sm-6 mb-3">
         <div class="card text-center shadow-sm bg-black text-white">
           <div class="card-body">
             <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="{% static 'Icons/frontendbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge"></a>
-            <h5 class="card-title">Front End Development</h5>
+            <img src="{{media_url}}{{completed.roadmap.badge}}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge"></a>
+            <h5 class="card-title">{{completed.roadmap.title}}</h5>
           </div>
         </div>
       </div>
+      {% endfor %}
       <!-- Repeat Badge Cards -->
-      <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card text-center shadow-sm bg-black text-white">
-          <div class="card-body">
-            <img src="{% static 'Icons/backendbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
-            <h5 class="card-title">Back End Development</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card text-center shadow-sm bg-black text-white">
-          <div class="card-body">
-            <img src="{% static 'Icons/dsabdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
-            <h5 class="card-title">DSA</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card text-center shadow-sm bg-black text-white">
-          <div class="card-body">
-            <img src="{% static 'Icons/aimlbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
-            <h5 class="card-title">AI/ML</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card text-center shadow-sm bg-black text-white">
-          <div class="card-body">
-            <img src="{% static 'Icons/cybersecbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
-            <h5 class="card-title">Cybersecurity</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card text-center shadow-sm bg-black text-white">
-          <div class="card-body">
-            <img src="{% static 'Icons/datanalybdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
-            <h5 class="card-title">Data Analyst</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card text-center shadow-sm bg-black text-white">
-          <div class="card-body">
-            <img src="{% static 'Icons/devopsbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
-            <h5 class="card-title">DevOps</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card text-center shadow-sm bg-black text-white">
-          <div class="card-body">
-            <img src="{% static 'Icons/datascibdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
-            <h5 class="card-title">Data Science</h5>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 col-sm-6 mb-3">
-        <div class="card text-center shadow-sm bg-black text-white">
-          <div class="card-body">
-            <img src="{% static 'Icons/blockchainbdg.svg' %}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge">
-            <h5 class="card-title">Blockchain</h5>
-          </div>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -166,35 +97,19 @@
   <div class="mb-4 text-white">
     <h4 class="pb-2">Courses in Progress</h4>
     <div class="list-group border border-3 border-info">
+      {% for progress in in_progress %}
       <div class="list-group-item text-white bg-black p-3">
-        <h5 class="mb-1">Front End Development</h5>
+        <h5 class="mb-1">{{progress.0.roadmap.title}}</h5>
         <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">100%</div>
+          <div class="progress-bar bg-success" role="progressbar" style="width: {{progress.1}}%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">{{progress.1}}%</div>
         </div>
       </div>
-      <div class="list-group-item text-white bg-black p-3">
-        <h5 class="mb-1">Back End Development</h5>
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
-        </div>
-      </div>
-      <div class="list-group-item text-white bg-black p-3">
-        <h5 class="mb-1">DSA</h5>
-        <div class="progress">
-          <div class="progress-bar bg-success" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
-        </div>
-      </div>
+      {% endfor %}
+
       <!-- Repeat for more courses -->
     </div>
   </div>
 </div>
-
-
-
-
-    
-
-
 
 
   {%endblock%}

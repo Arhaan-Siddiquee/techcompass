@@ -24,4 +24,4 @@ from techcompass import urls as techcompass_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(techcompass_urls, namespace='techcompass')),
-] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+] + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
+
 
 
 # Create your views here.
@@ -27,7 +29,7 @@ def login_user(request):
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			return redirect('/', {'success': 'You have been logged in'})
+			return redirect('/dashboard', {'success': 'You have been logged in'})
 		else:
 			messages.error(request, ('Invalid username or password'))
 			return redirect('/login')
@@ -57,7 +59,7 @@ def register_user(request):
 		except Exception as e:
 			return render(request, 'pages/register.html', {'error': str(e)})
 		login(request, user)
-		return redirect('/')	
+		return redirect('/dashboard')	
 	else:
 		return render(request, 'pages/register.html')
 
@@ -107,5 +109,13 @@ def datanalyst_view(request):
 
 @login_required(login_url='/login')
 def dashboard_view(request):
-
-	return render(request, 'pages/dashboard.html')
+	completed_roadmaps = request.user.progress.filter(completed=True)
+	inprogress_roadmaps = request.user.progress.filter(completed=False)
+	print(inprogress_roadmaps)
+	p =[]
+	for i in inprogress_roadmaps:
+		courses_completed = i.completed_courses.all()
+		courses_provided = i.roadmap.courses_provided.all()
+		p.append((i,f"{len(courses_completed)/len(courses_provided)*100:.0f}"))
+	return render(request, 'pages/dashboard.html',{'user': request.user, 'in_progress': p,
+	'completed_roadmaps': completed_roadmaps, 'media_url': settings.MEDIA_URL})
