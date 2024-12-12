@@ -9,7 +9,7 @@ def validate_svg(file):
         raise ValidationError(u'Error message')
 
 class Roadmap(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=100, unique=True)
     description = models.TextField()
     badge = models.FileField(upload_to='badges/',blank=True,null=True,validators=[validate_svg])
     created_at = models.DateTimeField(auto_now_add=True)

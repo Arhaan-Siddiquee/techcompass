@@ -8,6 +8,10 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
+from .models import Roadmap, Progress, Course
+from django.utils import timezone
+from django.core.exceptions import ValidationError
+
 
 
 
@@ -19,6 +23,34 @@ def home_view(request):
 def roadmap_view(request):
 	# Add your view logic here
 	return render(request, 'pages/roadmaps.html')
+
+@login_required(login_url='/login')
+def roadmap_detail_view(request, roadmap_name):
+	if not Roadmap.objects.filter(title=roadmap_name).exists():
+		return HttpResponse(f"Roadmap named: {roadmap_name} not found", status=404)
+	roadmap = Roadmap.objects.get(title=roadmap_name)
+	print(roadmap_name)
+	courses = roadmap.courses_provided.all()
+	completed = Progress.objects.filter(user=request.user, roadmap=roadmap, completed=True)
+	progress = Progress.objects.get(user=request.user, roadmap=roadmap)
+	if not progress:
+		return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses,"not_registered":True,'media_url': settings.MEDIA_URL})
+		
+	# if request.method == "POST":
+	# 	course_id = request.POST['course_id']
+	# 	course = Course.objects.get(id=course_id)
+	# 	progress.completed_courses.add(course)
+	# 	if progress.completed_courses.count() == courses.count():
+	# 		progress.completed = True
+	# 		progress.completed_at = timezone.now()
+	# 		progress.save()
+	# 	return redirect(f'/roadmap/{roadmap_name}')
+	fields = roadmap._meta.get_fields()
+	for field in fields:
+		print(field.name)
+	completed_courses = progress.completed_courses.all()
+	return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses, 'completed_courses': completed_courses,"completed":progress.completed,'media_url': settings.MEDIA_URL})
+
 
 def login_user(request):
 	if request.user.is_authenticated:
@@ -66,7 +98,7 @@ def register_user(request):
 @login_required(login_url='/login')
 def frontend_view(request):
 
-	return render(request, 'pages/frontend.html')
+	return render(request, 'pages/frontend.html',{'roadmaps': request.user.roadmaps.all()})
 
 @login_required(login_url='/login')
 def backend_view(request):
