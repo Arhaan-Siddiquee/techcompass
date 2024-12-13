@@ -11,6 +11,7 @@ from django.conf import settings
 from .models import Roadmap, Progress, Course
 from django.utils import timezone
 from django.core.exceptions import ValidationError
+import json
 
 
 
@@ -51,6 +52,33 @@ def roadmap_detail_view(request, roadmap_name):
 	completed_courses = progress.completed_courses.all()
 	return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses, 'completed_courses': completed_courses,"completed":progress.completed,'media_url': settings.MEDIA_URL})
 
+@login_required(login_url='/login')
+def course_update_view(request):
+	if request.method == "POST":
+		print(request.body)
+		body = json.loads(request.body)
+		course_title = body['course_title']
+		roadmap_id = body['roadmap_id']
+		is_checked= body['is_checked']
+		print(course_title, roadmap_id, is_checked)
+		roadmap = Roadmap.objects.get(id=roadmap_id)
+		course = Course.objects.get(title=course_title)
+		progress = Progress.objects.get(user=request.user, roadmap=roadmap)
+		if is_checked:
+			progress.completed_courses.add(course)
+			if progress.completed_courses.count() == roadmap.courses_provided.count():
+				progress.completed = True
+				progress.completed_at = timezone.now()
+				progress.save()
+			return JsonResponse({'success': 'Course completed'})
+		else:
+			progress.completed_courses.remove(course)
+			progress.completed = False
+			progress.completed_at = None
+			progress.save()
+			return JsonResponse({'success': 'Course not completed'})
+	else:
+		return JsonResponse({'error': 'Invalid request'})
 
 def login_user(request):
 	if request.user.is_authenticated:

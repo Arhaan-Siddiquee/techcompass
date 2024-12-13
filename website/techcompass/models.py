@@ -29,6 +29,7 @@ class Course(models.Model):
 
     videos = models.JSONField(default=list, blank=True)
 
+
     def __str__(self):
         return self.title
     
