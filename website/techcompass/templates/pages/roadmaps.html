@@ -100,23 +100,23 @@
               Explore Roadmaps
             </a>
             <ul class="dropdown-menu dropdown-menu-end text-bg-dark">
-              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:frontend' %}">Front End Development</a></li>
+              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Front End Development">Front End Development</a></li>
                 <hr class="dropdown-divider">
-              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:backend' %}">Back End Development</a></li>
+              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Back End Development">Back End Development</a></li>
                 <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:aiml' %}">AI/ML</a></li>
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\AI & ML">AI/ML</a></li>
                 <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:dsa' %}">DSA</a></li>
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\DSA">DSA</a></li>
                 <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:blockchain' %}">Blockchain</a></li>
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Blockchain">Blockchain</a></li>
                 <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:cybersec' %}">Cybersecurity</a></li>
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Cybersecurity">Cybersecurity</a></li>
                 <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:devops' %}">DevOps</a></li>
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\DevOps">DevOps</a></li>
                 <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:datasci' %}">Data Science</a></li>
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Science">Data Science</a></li>
                 <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:datanalyst' %}">Data Analyst</a></li>
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Analyst">Data Analyst</a></li>
             </ul>
           </li>
           <li class="nav-item">
@@ -137,10 +137,11 @@
         </ul>
       </div>
     </div>
-  </nav>
+</nav>
 
   <div style="height: 100px;"></div>
-<!--HERO SECTION-->
+
+  <!--HERO SECTION-->
 <div class="container text-center text-white">
   <div class="row">
     <div class="col-10 align-text-center">
@@ -185,7 +186,7 @@
         <span class="badge text-bg-info position-absolute top-0 start-100 translate-middle">Popular</span>
         <h5 class="card-title">Back End Development</h5>
         <p class="card-text">Back-end development manages servers, databases and APIs to keep websites running smoothly.</p>
-        <a href="{% url 'techcompass:backend' %}" class="btn btn-dark btn-outline-info">Go to resources</a>
+        <a href="{% url 'techcompass:roadmap'%}\Back End Development" class="btn btn-dark btn-outline-info">Go to resources</a>
       </div>
     </div>
   </div>
@@ -194,7 +195,7 @@
       <div class="card-body">
         <h5 class="card-title">AI/ML</h5>
         <p class="card-text">AI/ML involves creating systems that learn from data to make predictions and automate tasks.</p>
-        <a href="{% url 'techcompass:aiml' %}" class="btn btn-dark btn-outline-info">Go to resources</a>
+        <a href="{% url 'techcompass:roadmap'%}\AI & ML" class="btn btn-dark btn-outline-info">Go to resources</a>
       </div>
     </div>
   </div>
@@ -204,7 +205,7 @@
       <div class="card-body ">
         <h5 class="card-title">DSA</h5>
         <p class="card-text">DSA focuses on using data structures and algorithms to solve problems efficiently in programming.</p>
-        <a href="{% url 'techcompass:dsa' %}" class="btn btn-dark btn-outline-info">Go to resources</a>
+        <a href="{% url 'techcompass:roadmap'%}\DSA" class="btn btn-dark btn-outline-info">Go to resources</a>
       </div>
     </div>
   </div>
@@ -213,7 +214,7 @@
       <div class="card-body">
         <h5 class="card-title">Data Science</h5>
         <p class="card-text">Data science uses data analysis, statistics, and machine learning to extract insights and make decisions.</p>
-        <a href="{% url 'techcompass:datasci' %}" class="btn btn-dark btn-outline-info">Go to resources</a>
+        <a href="{% url 'techcompass:roadmap'%}\Data Science" class="btn btn-dark btn-outline-info">Go to resources</a>
       </div>
     </div>
   </div>
@@ -222,7 +223,7 @@
       <div class="card-body">
         <h5 class="card-title">Blockchain</h5>
         <p class="card-text">Blockchain is a secure way to store and share information or transactions across many computers without a central authority.</p>
-        <a href="{% url 'techcompass:blockchain' %}" class="btn btn-dark btn-outline-info">Go to resources</a>
+        <a href="{% url 'techcompass:roadmap'%}\Blockchain" class="btn btn-dark btn-outline-info">Go to resources</a>
       </div>
     </div>
   </div>
@@ -232,7 +233,7 @@
       <div class="card-body ">
         <h5 class="card-title">Cybersecurity</h5>
         <p class="card-text">Cybersecurity protects computers, networks, and data from unauthorized access, attacks, and damage.</p>
-        <a href="{% url 'techcompass:cybersec' %}" class="btn btn-dark btn-outline-info">Go to resources</a>
+        <a href="{% url 'techcompass:roadmap'%}\Cybersecurity" class="btn btn-dark btn-outline-info">Go to resources</a>
       </div>
     </div>
   </div>
@@ -241,7 +242,7 @@
       <div class="card-body">
         <h5 class="card-title">DevOps</h5>
         <p class="card-text">DevOps combines software development and IT operations to improve collaboration and speed up software launches.</p>
-        <a href="{% url 'techcompass:devops' %}" class="btn btn-dark btn-outline-info">Go to resources</a>
+        <a href="{% url 'techcompass:roadmap'%}\DevOps" class="btn btn-dark btn-outline-info">Go to resources</a>
       </div>
     </div>
   </div>
@@ -250,7 +251,7 @@
       <div class="card-body">
         <h5 class="card-title">Data Analyst</h5>
         <p class="card-text">Data analysts collect, process, and analyze data to help businesses make informed decisions.</p>
-        <a href="{% url 'techcompass:datanalyst' %}" class="btn btn-dark btn-outline-info">Go to resources</a>
+        <a href="{% url 'techcompass:roadmap'%}\Data Analyst" class="btn btn-dark btn-outline-info">Go to resources</a>
       </div>
     </div>
   </div>

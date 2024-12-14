@@ -23,5 +23,6 @@ urlpatterns = [
     path('dashboard', views.dashboard_view, name='dashboard'),
     path('roadmap/<str:roadmap_name>', views.roadmap_detail_view, name='roadmap_detail'),
     path('course_update', views.course_update_view, name='course_update'),
+    path('roadmap_register', views.roadmap_register_view, name='roadmap_register'),
     
 ]

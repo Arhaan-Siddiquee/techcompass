@@ -30,12 +30,13 @@ def roadmap_detail_view(request, roadmap_name):
 	if not Roadmap.objects.filter(title=roadmap_name).exists():
 		return HttpResponse(f"Roadmap named: {roadmap_name} not found", status=404)
 	roadmap = Roadmap.objects.get(title=roadmap_name)
-	print(roadmap_name)
 	courses = roadmap.courses_provided.all()
 	completed = Progress.objects.filter(user=request.user, roadmap=roadmap, completed=True)
-	progress = Progress.objects.get(user=request.user, roadmap=roadmap)
-	if not progress:
+	try:
+		progress = Progress.objects.get(user=request.user, roadmap=roadmap)
+	except Progress.DoesNotExist:
 		return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses,"not_registered":True,'media_url': settings.MEDIA_URL})
+		
 		
 	# if request.method == "POST":
 	# 	course_id = request.POST['course_id']
@@ -46,11 +47,20 @@ def roadmap_detail_view(request, roadmap_name):
 	# 		progress.completed_at = timezone.now()
 	# 		progress.save()
 	# 	return redirect(f'/roadmap/{roadmap_name}')
-	fields = roadmap._meta.get_fields()
-	for field in fields:
-		print(field.name)
 	completed_courses = progress.completed_courses.all()
 	return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses, 'completed_courses': completed_courses,"completed":progress.completed,'media_url': settings.MEDIA_URL})
+
+@login_required(login_url='/login')
+def roadmap_register_view(request, roadmap_name):
+	if not Roadmap.objects.filter(title=roadmap_name).exists():
+		return HttpResponse(f"Roadmap named: {roadmap_name} not found", status=404)
+	roadmap = Roadmap.objects.get(title=roadmap_name)
+	try:
+		progress = Progress.objects.get(user=request.user, roadmap=roadmap)
+	except Progress.DoesNotExist:
+		progress = Progress(user=request.user, roadmap=roadmap)
+		progress.save()
+	return redirect(f'/roadmap/{roadmap_name}')
 
 @login_required(login_url='/login')
 def course_update_view(request):
