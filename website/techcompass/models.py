@@ -15,6 +15,7 @@ class Roadmap(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     #updated_at = models.DateTimeField(auto_now=True)
     courses_provided = models.ManyToManyField('Course', related_name='roadmaps', blank=True)
+    roadmap_link = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.title
