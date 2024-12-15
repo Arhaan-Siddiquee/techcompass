@@ -16,6 +16,7 @@
 
 
 {%block body%}
+    
     {% if not_registered %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
         <div class="container">
@@ -30,7 +31,7 @@
         <h1 class="text-center text-white pb-3">
         {{roadmap.title}}
         </h1>
-        <a href="{% url 'techcompass:roadmap'%}\Front End Development" id="roadmap_register" data-to="{{progress}}" class="btn btn-outline-info mx-4 px-3 fs-5">Start your Journey</a>
+        <a href="{% url 'techcompass:roadmap_register' roadmap.title %}" id="roadmap_register" class="btn btn-outline-info mx-4 px-3 fs-5">Start your Journey</a>
     </div>
     <div style="height: 150px;"></div>
     
@@ -169,28 +170,7 @@
     
     {%block jsfiles%}
     <script>
-        document.addEventListener('DOMContentLoaded',function(){
-            const roadmap_register = document.getElementById('roadmap_register');
-            roadmap_register.addEventListener('click',function(){
-                const progress = this.getAttribute('data-to');
-                console.log(progress);
-                fetch(`{% url 'techcompass:roadmap_register' %}`,{
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': '{{csrf_token}}'
-                    },
-                    body: JSON.stringify({
-                        progress: progress,
-                        roadmap_id: "{{roadmap.id}}"
-                    })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                });
-            });
-        })
+       
 
         document.addEventListener('DOMContentLoaded', function() {
             const course_toggle = document.querySelectorAll('.course_toggle');

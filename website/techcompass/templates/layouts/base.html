@@ -32,33 +32,25 @@
     {%endblock%}
 
     <!-- Toast Container -->
- <div class="toast-container position-fixed top-0 end-0 p-3">
-  <div id="toast-error" class="toast bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header bg-dark">
-          <strong class="me-auto text-danger">Error</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-      <div class="toast-body">
-          {% if error %}
-            Username already exists
-          {% endif %}
-      </div>
-  </div>
-</div>
 
-<div class="toast-container position-fixed top-0 end-0 p-3">
-  <div id="toast-success" class="toast bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header bg-dark">
-          <strong class="me-auto text-success">Logged in</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+{% if messages %}
+    {% for message in messages %}
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div id="toast" class="toast bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header bg-dark">
+            
+            {% if message.tags == 'error' %}
+              <strong class="me-auto text-danger">{{message}}</strong>
+            {% elif message.tags == 'success' %}
+              <strong class="me-auto text-success">{{message}}</strong>
+            {% endif %}
+              
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
       </div>
-      <div class="toast-body">
-          {% if success %}
-            {{success}}
-          {% endif %}
-      </div>
-  </div>
-</div>
+    </div>
+    {% endfor %}
+{% endif %}
 
 
     <!--FOOTER-->
@@ -124,8 +116,8 @@
 <!-- Toast Script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-      const toastElement = document.getElementById('toast-error');
-      if (toastElement.querySelector('.toast-body').innerHTML.trim() !== '') {
+      const toastElement = document.getElementById('toast');
+      if (toastElement) {
           const toast = new bootstrap.Toast(toastElement);
           toast.show();
       }

@@ -27,28 +27,22 @@ def roadmap_view(request):
 
 @login_required(login_url='/login')
 def roadmap_detail_view(request, roadmap_name):
-	if not Roadmap.objects.filter(title=roadmap_name).exists():
-		return HttpResponse(f"Roadmap named: {roadmap_name} not found", status=404)
-	roadmap = Roadmap.objects.get(title=roadmap_name)
-	courses = roadmap.courses_provided.all()
-	completed = Progress.objects.filter(user=request.user, roadmap=roadmap, completed=True)
-	try:
-		progress = Progress.objects.get(user=request.user, roadmap=roadmap)
-	except Progress.DoesNotExist:
-		return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses,"not_registered":True,'media_url': settings.MEDIA_URL})
+	if request.method == "GET":
+		if not Roadmap.objects.filter(title=roadmap_name).exists():
+			return HttpResponse(f"Roadmap named: {roadmap_name} not found", status=404)
+		roadmap = Roadmap.objects.get(title=roadmap_name)
+		courses = roadmap.courses_provided.all()
+		completed = Progress.objects.filter(user=request.user, roadmap=roadmap, completed=True)
+		try:
+			progress = Progress.objects.get(user=request.user, roadmap=roadmap)
+		except Progress.DoesNotExist:
+			return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses,"not_registered":True,'media_url': settings.MEDIA_URL})
 		
-		
-	# if request.method == "POST":
-	# 	course_id = request.POST['course_id']
-	# 	course = Course.objects.get(id=course_id)
-	# 	progress.completed_courses.add(course)
-	# 	if progress.completed_courses.count() == courses.count():
-	# 		progress.completed = True
-	# 		progress.completed_at = timezone.now()
-	# 		progress.save()
-	# 	return redirect(f'/roadmap/{roadmap_name}')
-	completed_courses = progress.completed_courses.all()
-	return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses, 'completed_courses': completed_courses,"completed":progress.completed,'media_url': settings.MEDIA_URL})
+		completed_courses = progress.completed_courses.all()
+		return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses, 'completed_courses': completed_courses,"completed":progress.completed,'media_url': settings.MEDIA_URL})
+	else:
+		return JsonResponse({'error': 'Invalid request'})
+	
 
 @login_required(login_url='/login')
 def roadmap_register_view(request, roadmap_name):
@@ -99,7 +93,8 @@ def login_user(request):
 		user = authenticate(request, username=username, password=password)
 		if user is not None:
 			login(request, user)
-			return redirect('/dashboard', {'success': 'You have been logged in'})
+			messages.success(request, ('You have been logged in'))
+			return redirect('/dashboard')
 		else:
 			messages.error(request, ('Invalid username or password'))
 			return redirect('/login')
@@ -127,7 +122,12 @@ def register_user(request):
 			user = User.objects.create_user(username=username, password=password, first_name=first_name, last_name=last_name, email=email)
 			user.save()
 		except Exception as e:
-			return render(request, 'pages/register.html', {'error': str(e)})
+			if 'UNIQUE constraint' in str(e):
+				messages.error(request, ('Username already exists'))
+			#elif 'password does not match' in str(e):
+			else:
+				messages.error(request, ('Invalid username or password'))
+			return render(request, 'pages/register.html')
 		login(request, user)
 		return redirect('/dashboard')	
 	else:
@@ -138,54 +138,15 @@ def frontend_view(request):
 
 	return render(request, 'pages/frontend.html',{'roadmaps': request.user.roadmaps.all()})
 
-@login_required(login_url='/login')
-def backend_view(request):
-	return render(request, 'pages/backend.html')
 
 @login_required(login_url='/login')
-def aiml_view(request):
-		
-	return render(request, 'pages/aiml.html')
-
-@login_required(login_url='/login')
-def blockchain_view(request):
-	
-	return render(request, 'pages/blockchn.html')
-
-@login_required(login_url='/login')
-def cybersec_view(request):
-	
-	return render(request, 'pages/cybersec.html')
-
-@login_required(login_url='/login')
-def dsa_view(request):
-		
-	return render(request, 'pages/dsa.html')
-
-@login_required(login_url='/login')
-def devops_view(request):
-		
-	return render(request, 'pages/devops.html')
-
-@login_required(login_url='/login')
-def datasci_view(request):
-
-	return render(request, 'pages/datasci.html')
-
-@login_required(login_url='/login')
-def datanalyst_view(request):
-
-	return render(request, 'pages/dataanalys.html')
-
-@login_required(login_url='/login')
-def dashboard_view(request):
+def dashboard_view(request,success=False):
 	completed_roadmaps = request.user.progress.filter(completed=True)
 	inprogress_roadmaps = request.user.progress.filter(completed=False)
-	print(inprogress_roadmaps)
 	p =[]
 	for i in inprogress_roadmaps:
 		courses_completed = i.completed_courses.all()
 		courses_provided = i.roadmap.courses_provided.all()
 		p.append((i,f"{len(courses_completed)/len(courses_provided)*100:.0f}"))
 	return render(request, 'pages/dashboard.html',{'user': request.user, 'in_progress': p,
-	'completed_roadmaps': completed_roadmaps, 'media_url': settings.MEDIA_URL})
+	'completed_roadmaps': completed_roadmaps, 'media_url': settings.MEDIA_URL,"success":success})
