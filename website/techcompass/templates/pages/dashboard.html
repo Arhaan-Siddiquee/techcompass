@@ -15,6 +15,11 @@
     transform:scale(1.1);
     box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
   }
+  .scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+  }
 </style>
 {%endblock%}
 
@@ -51,7 +56,7 @@
             <a class="nav-link dropdown-toggle mx-4 px-3 fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navigation">
               Explore Roadmaps
             </a>
-            <ul class="dropdown-menu dropdown-menu-end text-bg-dark">
+            <ul class="dropdown-menu dropdown-menu-end text-bg-dark scrollable-menu">
               <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Front End Development">Front End Development</a></li>
                 <hr class="dropdown-divider">
               <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Back End Development">Back End Development</a></li>

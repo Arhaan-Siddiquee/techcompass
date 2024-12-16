@@ -65,6 +65,11 @@
 .poster{
     display: block;
   }
+  .scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+  }
   @media screen and (max-width: 768px){
     .poster{
       height: 200px;
@@ -75,6 +80,7 @@
       display: none;
     }
   }
+
 </style>
 
 {%endblock%}
@@ -99,30 +105,14 @@
             <a class="nav-link dropdown-toggle mx-4 px-3 fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navigation">
               Explore Roadmaps
             </a>
-            <ul class="dropdown-menu dropdown-menu-end text-bg-dark">
+            <ul class="dropdown-menu dropdown-menu-end text-bg-dark scrollable-menu">
               
               {% for roadmp in roadmaps %}
                 <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\{{roadmp.title}}">{{roadmp.title}}</a></li>
                 <hr class="dropdown-divider">
               {% endfor %}
                 
-              {% comment %} <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Front End Development">Front End Development</a></li>
-                <hr class="dropdown-divider">
-              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Back End Development">Back End Development</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\AI & ML">AI/ML</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\DSA">DSA</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Blockchain">Blockchain</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Cybersecurity">Cybersecurity</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\DevOps">DevOps</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Science">Data Science</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Analyst">Data Analyst</a></li> {% endcomment %}
+              
             </ul>
           </li>
           <li class="nav-item">
