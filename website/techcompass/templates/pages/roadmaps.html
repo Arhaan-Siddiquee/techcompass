@@ -100,7 +100,13 @@
               Explore Roadmaps
             </a>
             <ul class="dropdown-menu dropdown-menu-end text-bg-dark">
-              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Front End Development">Front End Development</a></li>
+              
+              {% for roadmp in roadmaps %}
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\{{roadmp.title}}">{{roadmp.title}}</a></li>
+                <hr class="dropdown-divider">
+              {% endfor %}
+                
+              {% comment %} <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Front End Development">Front End Development</a></li>
                 <hr class="dropdown-divider">
               <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Back End Development">Back End Development</a></li>
                 <hr class="dropdown-divider">
@@ -116,13 +122,13 @@
                 <hr class="dropdown-divider">
                 <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Science">Data Science</a></li>
                 <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Analyst">Data Analyst</a></li>
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Analyst">Data Analyst</a></li> {% endcomment %}
             </ul>
           </li>
           <li class="nav-item">
             {% if user.is_authenticated %}
               <div class="btn-group pt-1">
-                <a class="navbar-brand px-5" type="button" data-bs-toggle="dropdown" ><i class="fa-solid fa-user-large"></i></a>
+                <a class="navbar-brand px-5 dropdown-center" type="button" data-bs-toggle="dropdown" ><i class="fa-solid fa-user-large"></i></a>
                 <ul class="dropdown-menu text-bg-dark">
                   <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:dashboard' %}">Dashboard</a></li>
                   <li><hr class="dropdown-divider"></li>

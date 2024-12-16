@@ -22,8 +22,8 @@ def home_view(request):
 	return render(request, 'pages/home.html')
 
 def roadmap_view(request):
-	# Add your view logic here
-	return render(request, 'pages/roadmaps.html')
+	roadmap = Roadmap.objects.all()
+	return render(request, 'pages/roadmaps.html', {'roadmaps': roadmap})
 
 @login_required(login_url='/login')
 def roadmap_detail_view(request, roadmap_name):

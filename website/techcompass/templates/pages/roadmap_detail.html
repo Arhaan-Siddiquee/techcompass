@@ -93,7 +93,7 @@
                 <li class="nav-item">
                     {% if user.is_authenticated %}
                     <div class="btn-group pt-1">
-                        <a class="navbar-brand px-5" type="button" data-bs-toggle="dropdown" ><i class="fa-solid fa-user-large"></i></a>
+                        <a class="navbar-brand px-5 dropdown-center" type="button" data-bs-toggle="dropdown" ><i class="fa-solid fa-user-large"></i></a>
                         <ul class="dropdown-menu text-bg-dark">
                         <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:dashboard' %}">Dashboard</a></li>
                         <li><hr class="dropdown-divider"></li>
@@ -132,10 +132,10 @@
             <div class="container text-center">
                 <div class="row justify-content-center">
                     <b class="text-white p-4" style="font-size:xxx-large;">{{course.title}}</b>
-                    <p class="text-white fs-5">{{course.description}}</p>
+                    <p class="text-white fs-5">{{course.description | safe}}</p>
                     <div class="pt-4">
                         <div class="text-center pb-4 text-white"><a class="btn btn-outline-info px-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{course.title}}" aria-expanded="false" aria-controls="collapsehtml">
-                          Best Youtube Videos &#x25BC;
+                          Related Youtube Videos &#x25BC;
                       </a></div></div>
                     <div class="collapse" id="collapse{{course.title}}">
                         <div class="container text-center">
