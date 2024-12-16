@@ -6,6 +6,11 @@
 {%endblock%}
 {%block cssfiles%}
 <style>
+#credits:hover{
+    opacity: 100%;
+    transform:scale(1.04);
+    color: rgba(83,240,251,1);
+}
 .btn:hover{
     opacity: 100%;
     transform:scale(1.04);
@@ -133,7 +138,7 @@
             <div style="height: 40px;"></div>
             <hr class="border border-info border-2">
 
-            <div id = "{{course.title}}" class="pt-5 auto_show">
+            <div id = "{{course.title}}" class="pt-5">
             <div class="container text-center">
                 <div class="row justify-content-center">
                     <b class="text-white p-4" style="font-size:xxx-large;">{{course.title}}</b>
@@ -143,11 +148,11 @@
                           Related Youtube Videos &#x25BC;
                       </a></div></div>
                     <div class="collapse" id="collapse{{course.title}}">
-                        <div class="container text-center">
+                        <div class="container text-center pb-3">
                             <div class="row border-1 border-info">
                             {% for video in course.videos %}
                             
-                                <div class="col"><div><iframe width="560" height="315" src="{{video.1}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p class="text-white p-4">Video Credits: {{video.0}}</p></div></div>
+                                <div class="col"><div class="pb-3"><iframe width="560" height="315" src="{{video.1}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br><a class="text-white pt-3 pb-2" id="credits" href="{{video.2}}" style="text-decoration: none;" target="_blank">Video Credits: <b style="color: rgb(47, 194, 204);">{{video.0}}</b></a></div></div>
                             {% endfor %}
                         </div>
                     </div>
