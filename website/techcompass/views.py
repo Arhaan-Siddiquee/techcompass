@@ -33,13 +33,19 @@ def roadmap_detail_view(request, roadmap_name):
 		roadmap = Roadmap.objects.get(title=roadmap_name)
 		courses = roadmap.courses_provided.all()
 		completed = Progress.objects.filter(user=request.user, roadmap=roadmap, completed=True)
+		p =[]
+		inprogress_roadmaps = request.user.progress.filter(completed=False)
+		for i in inprogress_roadmaps:
+			courses_completed = i.completed_courses.all()
+			courses_provided = i.roadmap.courses_provided.all()
+			p.append((i,f"{len(courses_completed)/len(courses_provided)*100:.0f}"))
 		try:
 			progress = Progress.objects.get(user=request.user, roadmap=roadmap)
 		except Progress.DoesNotExist:
 			return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses,"not_registered":True,'media_url': settings.MEDIA_URL})
 		
 		completed_courses = progress.completed_courses.all()
-		return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses, 'completed_courses': completed_courses,"completed":progress.completed,'media_url': settings.MEDIA_URL})
+		return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses, 'completed_courses': completed_courses,"finished":completed,'in_progress': p,'media_url': settings.MEDIA_URL})
 	else:
 		return JsonResponse({'error': 'Invalid request'})
 	
