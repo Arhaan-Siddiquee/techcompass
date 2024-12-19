@@ -45,23 +45,13 @@
               Explore Roadmaps
             </a>
             <ul class="dropdown-menu dropdown-menu-end text-bg-dark scrollable-menu">
-              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Front End Development">Front End Development</a></li>
+              
+              {% for roadmp in roadmp_list %}
+                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\{{roadmp.title}}">{{roadmp.title}}</a></li>
                 <hr class="dropdown-divider">
-              <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Back End Development">Back End Development</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\AI & ML">AI/ML</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\DSA">DSA</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Blockchain">Blockchain</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Cybersecurity">Cybersecurity</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\DevOps">DevOps</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Science">Data Science</a></li>
-                <hr class="dropdown-divider">
-                <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Analyst">Data Analyst</a></li>
+              {% endfor %}
+                
+              
             </ul>
           </li>
           <li class="nav-item">
