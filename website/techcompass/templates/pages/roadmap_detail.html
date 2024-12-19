@@ -1,260 +1,449 @@
-{% extends "layouts/base.html" %}
-{% load static %}
-
-{%block title%} 
-    {{roadmap.title}}
-{%endblock%}
+{% extends "layouts/base.html" %} 
+{% load static %} 
+{%block title%}
+{{roadmap.title}} 
+{%endblock%} 
 {%block cssfiles%}
 <style>
-#credits:hover{
+  #credits:hover {
     opacity: 100%;
-    transform:scale(1.04);
-    color: rgba(83,240,251,1);
-}
-.btn:hover{
+    transform: scale(1.04);
+    color: rgba(83, 240, 251, 1);
+  }
+  .btn:hover {
     opacity: 100%;
-    transform:scale(1.04);
-    box-shadow: 0px 0px 10px 0px rgba(83,240,251,1);
+    transform: scale(1.04);
+    box-shadow: 0px 0px 10px 0px rgba(83, 240, 251, 1);
   }
   .scrollable-menu {
     height: auto;
     max-height: 200px;
     overflow-x: hidden;
   }
+  .test {
+    width: 300px;
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #17a2b8;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px 2px rgba(83, 240, 251, 1);
+  }
+  .container1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 1200px;
+  }
+ 
 </style>
-{%endblock%}
+{%endblock%} 
+{%block body%} 
+{% if not_registered %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+  <div class="container">
+    <!--LOGO-->
+    <a class="navbar-brand px-5 logo" href="{% url 'techcompass:index' %}"
+      ><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px"
+    /></a>
+  </div>
+</nav>
+<div style="height: 100px"></div>
+<div class="container pt-5 text-center justify-content-center">
+  <img
+    src="{{media_url}}{{roadmap.badge}}"
+    class="rounded-circle mb-3"
+    alt="badge"
+    height="200px"
+    style="box-shadow: 0px 0px 10px 2px rgba(83, 240, 251, 1)"
+  />
+  <h1 class="text-center text-white pb-3">{{roadmap.title}}</h1>
+  <a
+    href="{% url 'techcompass:roadmap_register' roadmap.title %}"
+    id="roadmap_register"
+    class="btn btn-outline-info mx-4 px-3 fs-5"
+    >Start your Journey</a
+  >
+</div>
+<div style="height: 150px"></div>
 
+{% else %}
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent">
+  <div class="container">
+    <!--LOGO-->
+    <a class="navbar-brand px-5" href="{% url 'techcompass:index' %}"
+      ><img
+        src="{% static 'Icons/Logo.svg' %}"
+        alt="Logo"
+        height="58px"
+        class="logo"
+    /></a>
+    <!--TOGGLE BTN-->
+    <button
+      class="navbar-toggler shadow-none border-0"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--SIDEBAR-->
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link mx-4 px-3 fs-4"
+            aria-current="page"
+            href="{% url 'techcompass:index' %}"
+            id="navigation"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item dropdown-center">
+          <a
+            class="nav-link dropdown-toggle mx-4 px-3 fs-4"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            id="navigation"
+          >
+            Explore Roadmaps
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end text-bg-dark scrollable-menu"
+          >
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="{% url 'techcompass:roadmap'%}\Front End Development"
+                >Front End Development</a
+              >
+            </li>
+            <hr class="dropdown-divider" />
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="{% url 'techcompass:roadmap'%}\Back End Development"
+                >Back End Development</a
+              >
+            </li>
+            <hr class="dropdown-divider" />
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="{% url 'techcompass:roadmap'%}\AI & ML"
+                >AI/ML</a
+              >
+            </li>
+            <hr class="dropdown-divider" />
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="{% url 'techcompass:roadmap'%}\DSA"
+                >DSA</a
+              >
+            </li>
+            <hr class="dropdown-divider" />
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="{% url 'techcompass:roadmap'%}\Blockchain"
+                >Blockchain</a
+              >
+            </li>
+            <hr class="dropdown-divider" />
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="{% url 'techcompass:roadmap'%}\Cybersecurity"
+                >Cybersecurity</a
+              >
+            </li>
+            <hr class="dropdown-divider" />
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="{% url 'techcompass:roadmap'%}\DevOps"
+                >DevOps</a
+              >
+            </li>
+            <hr class="dropdown-divider" />
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="{% url 'techcompass:roadmap'%}\Data Science"
+                >Data Science</a
+              >
+            </li>
+            <hr class="dropdown-divider" />
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="{% url 'techcompass:roadmap'%}\Data Analyst"
+                >Data Analyst</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown-center">
+          <a
+            class="nav-link dropdown-toggle mx-4 px-3 fs-4"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            id="navigation"
+          >
+            {{roadmap.title}}
+          </a>
+          <ul
+            class="dropdown-menu dropdown-menu-end text-bg-dark scrollable-menu"
+          >
+            {% for course in courses %}
+            <li>
+              <a
+                class="dropdown-item text-white bg-dark"
+                href="#{{course.title}}"
+                >{{course.title}}</a
+              >
+            </li>
+            <hr class="dropdown-divider" />
+            {% endfor %}
+          </ul>
+        </li>
+        <li class="nav-item">
+          <div class="btn-group pt-2">
+            <a
+              href="{{roadmap.roadmap_link}}"
+              class="btn btn-outline-info mx-2 px-2 fs-5"
+              target="blank"
+              >Roadmap <i class="fa-solid fa-download"></i
+            ></a>
+          </div>
+        </li>
+        <li class="nav-item">
+          {% if user.is_authenticated %}
+          <div class="btn-group pt-1">
+            <a
+              class="navbar-brand px-5 dropdown-center"
+              type="button"
+              data-bs-toggle="dropdown"
+              ><i class="fa-solid fa-user-large"></i
+            ></a>
+            <ul class="dropdown-menu text-bg-dark">
+              <li>
+                <a
+                  class="dropdown-item text-white bg-dark"
+                  href="{% url 'techcompass:dashboard' %}"
+                  >Dashboard</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a
+                  class="dropdown-item text-white bg-dark"
+                  href="{% url 'techcompass:logout' %}"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+          {% else %}
+          <a
+            href="{% url 'techcompass:login' %}"
+            class="btn btn-outline-info mx-4 px-3 fs-5"
+            role="button"
+            >Login/Sign Up</a
+          >
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div style="height: 100px"></div>
+<div class="container">
+  {% if roadmap.title == finished.0.roadmap.title %}
+  <div class="fs-4 text-white text-center">Your Progress</div>
+  <div class="progress">
+    <div
+      class="progress-bar bg-success"
+      role="progressbar"
+      style="width: 100%"
+      aria-valuenow="70"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      100%
+    </div>
+  </div>
+  <div class="text-white text-center">100% completed</div>
+  {% endif %} 
+  {% for progress in in_progress %} 
+  {% if progress.0.roadmap.title == roadmap.title %}
+  <div class="fs-4 text-white text-center">Your Progress</div>
+  <div class="progress">
+    <div
+      class="progress-bar bg-success"
+      role="progressbar"
+      style="width: {{progress.1}}%;"
+      aria-valuenow="70"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      {{progress.1}}%
+    </div>
+  </div>
+  <div class="text-white text-center">{{progress.1}}% completed</div>
+  {% elif roadmap.title in completed_courses %} 
+  {% endif %} 
+  {% endfor %}
 
-{%block body%}
-    
-    {% if not_registered %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
-        <div class="container">
-          <!--LOGO-->
-          <a class="navbar-brand px-5 logo" href="{% url 'techcompass:index' %}"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px"></a>
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <b class="text-white p-4" style="font-size: xxx-large"
+        >{{roadmap.title}}</b
+      >
+      <p class="text-white fs-5">{{roadmap.description | safe}}</p>
+    </div>
+  </div>
+  {% for course in courses %}
+  <div style="height: 40px"></div>
+  <hr class="border border-info border-2" />
+
+  <div id="{{course.title}}" class="pt-5">
+    <div class="container-fluid text-center">
+      <div class="row justify-content-center">
+        <b class="text-white p-4" style="font-size: xxx-large"
+          >{{course.title}}</b
+        >
+        <p class="text-white fs-5">{{course.description | safe}}</p>
+        <div class="pt-4">
+          <div class="text-center pb-4 text-white">
+            <a
+              class="btn btn-outline-info px-2"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapse{{course.title}}"
+              aria-expanded="false"
+              aria-controls="collapsehtml"
+            >
+              Related Youtube Videos &#x25BC;
+            </a>
           </div>
         </div>
-      </nav>
-    <div style="height: 100px;"></div>
-    <div class="container pt-5 text-center justify-content-center">
-        <img src="{{media_url}}{{roadmap.badge}}" class="rounded-circle mb-3" alt="badge" height="200px" style="box-shadow: 0px 0px 10px 2px rgba(83,240,251,1);">
-        <h1 class="text-center text-white pb-3">
-        {{roadmap.title}}
-        </h1>
-        <a href="{% url 'techcompass:roadmap_register' roadmap.title %}" id="roadmap_register" class="btn btn-outline-info mx-4 px-3 fs-5">Start your Journey</a>
+        <div class="collapse" id="collapse{{course.title}}" style="width: 100%">
+          <div class="container1">
+            {% for video in course.videos %}
+
+            <div class="test">
+                <iframe
+                  width="100%"
+                  height="auto"
+                  src="{{video.1}}"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen
+                ></iframe
+                ><br /><a
+                  class="text-white pt-3 pb-2"
+                  id="credits"
+                  href="{{video.2}}"
+                  style="text-decoration: none"
+                  target="_blank"
+                  >Video Credits:
+                  <b style="color: rgb(47, 194, 204)">{{video.0}}</b></a
+                >
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
     </div>
-    <div style="height: 150px;"></div>
-    
+  </div>
+
+  <div class="form-check text-white">
+    {% if course in completed_courses %}
+    <input
+      class="form-check-input bg-info course_toggle"
+      type="checkbox"
+      value=""
+      id="flexCheckDefault"
+      data-from="{{course.title}}"
+      checked
+    />
     {% else %}
-        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent ">
-            <div class="container">
-            <!--LOGO-->
-            <a class="navbar-brand px-5" href="{% url 'techcompass:index' %}"><img src="{% static 'Icons/Logo.svg' %}" alt="Logo" height="58px" class="logo"></a>
-            <!--TOGGLE BTN-->
-            <button class="navbar-toggler shadow-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!--SIDEBAR-->
-            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link mx-4 px-3 fs-4" aria-current="page" href="{% url 'techcompass:index' %}" id="navigation">Home</a>
-                </li>
-                <li class="nav-item dropdown-center">
-                    <a class="nav-link dropdown-toggle mx-4 px-3 fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navigation">
-                    Explore Roadmaps
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end text-bg-dark scrollable-menu">
-                    <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Front End Development">Front End Development</a></li>
-                        <hr class="dropdown-divider">
-                    <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Back End Development">Back End Development</a></li>
-                        <hr class="dropdown-divider">
-                        <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\AI & ML">AI/ML</a></li>
-                        <hr class="dropdown-divider">
-                        <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\DSA">DSA</a></li>
-                        <hr class="dropdown-divider">
-                        <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Blockchain">Blockchain</a></li>
-                        <hr class="dropdown-divider">
-                        <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Cybersecurity">Cybersecurity</a></li>
-                        <hr class="dropdown-divider">
-                        <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\DevOps">DevOps</a></li>
-                        <hr class="dropdown-divider">
-                        <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Science">Data Science</a></li>
-                        <hr class="dropdown-divider">
-                        <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:roadmap'%}\Data Analyst">Data Analyst</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown-center">
-                    <a class="nav-link dropdown-toggle mx-4 px-3 fs-4" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="navigation">
-                      {{roadmap.title}}
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end text-bg-dark scrollable-menu">
-                        {% for course in courses %}
-                        <li><a class="dropdown-item text-white bg-dark" href="#{{course.title}}">{{course.title}}</a></li>
-                            <hr class="dropdown-divider">
-                        {% endfor %}
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <div class="btn-group pt-2">
-                      <a href="{{roadmap.roadmap_link}}" class="btn btn-outline-info mx-2 px-2 fs-5" target="blank">Roadmap <i class="fa-solid fa-download"></i></a>
-                    </div>
-                  </li>
-                <li class="nav-item">
-                    {% if user.is_authenticated %}
-                    <div class="btn-group pt-1">
-                        <a class="navbar-brand px-5 dropdown-center" type="button" data-bs-toggle="dropdown" ><i class="fa-solid fa-user-large"></i></a>
-                        <ul class="dropdown-menu text-bg-dark">
-                        <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:dashboard' %}">Dashboard</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-white bg-dark" href="{% url 'techcompass:logout' %}">Logout</a></li>
-                        </ul>
-                    </div>
-                    {% else %}
-                    <a href="{% url 'techcompass:login' %}" class="btn btn-outline-info mx-4 px-3 fs-5" role="button">Login/Sign Up</a>
-                    {% endif %}
-                </li>
-                
-                </ul>
-            </div>
-            </div>
-        </nav>
-        <div style="height: 100px;"></div>
-        <div class="container pt-4 pb-2">
-
-            
-            {% if roadmap.title == finished.0.roadmap.title %}
-                <div class=" fs-4 text-white text-center">Your Progress</div>
-                <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">100%</div>
-                </div>
-                <div class="text-white text-center">100% completed</div>
-            {% endif %}
-                
-
-            {% for progress in in_progress %}
-
-            {% if progress.0.roadmap.title == roadmap.title %}
-                <div class=" fs-4 text-white text-center">Your Progress</div>
-                <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: {{progress.1}}%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">{{progress.1}}%</div>
-                </div>
-                <div class="text-white text-center">{{progress.1}}% completed</div>
-            {% elif roadmap.title in completed_courses %}
-                
-            {% endif %}
-        {% endfor %}
-            <!--PROGRESS BAR-->
-            <!-- <div class=" fs-4 text-white text-center">Your Progress</div>
-            <div class="progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: {{progress.1}}%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">{{progress.1}}%</div>
-              </div>
-            </div>
-          <div class="text-white text-center">{{progress.1}}% completed</div> -->
-        <div class="container text-center">
-            <div class="row justify-content-center">
-                <b class="text-white p-4" style="font-size:xxx-large;">{{roadmap.title}}</b>
-                <p class="text-white fs-5">{{roadmap.description | safe}}</p>
-            </div>
-        </div>
-        {% for course in courses %}
-            <div style="height: 40px;"></div>
-            <hr class="border border-info border-2">
-
-            <div id = "{{course.title}}" class="pt-5">
-            <div class="container text-center">
-                <div class="row justify-content-center">
-                    <b class="text-white p-4" style="font-size:xxx-large;">{{course.title}}</b>
-                    <p class="text-white fs-5">{{course.description | safe}}</p>
-                    <div class="pt-4">
-                        <div class="text-center pb-4 text-white"><a class="btn btn-outline-info px-2" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{course.title}}" aria-expanded="false" aria-controls="collapsehtml">
-                          Related Youtube Videos &#x25BC;
-                      </a></div></div>
-                    <div class="collapse" id="collapse{{course.title}}">
-                        <div class="container text-center pb-3">
-                            <div class="row border-1 border-info">
-                            {% for video in course.videos %}
-                            
-                                <div class="col"><div class="pb-3"><iframe width="560" height="315" src="{{video.1}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><br><a class="text-white pt-3 pb-2" id="credits" href="{{video.2}}" style="text-decoration: none;" target="_blank">Video Credits: <b style="color: rgb(47, 194, 204);">{{video.0}}</b></a></div></div>
-                            {% endfor %}
-                        </div>
-                    </div>
-              </div>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <div class="form-check text-white">
-            {% if course in completed_courses %}
-                <input class="form-check-input bg-info course_toggle" type="checkbox" value="" id="flexCheckDefault" data-from="{{course.title}}"  checked>
-            {% else %}
-                <input class="form-check-input bg-info course_toggle" type="checkbox" value="" id="flexCheckDefault" data-from="{{course.title}}">
-            {% endif %}
-            <label class="form-check-label" for="flexCheckDefault">
-              Mark as Complete</label>
-          </div>
-        {% endfor %}
-    </div>
-
-    <div style="height: 40px;"></div>
+    <input
+      class="form-check-input bg-info course_toggle"
+      type="checkbox"
+      value=""
+      id="flexCheckDefault"
+      data-from="{{course.title}}"
+    />
     {% endif %}
-        
-    
-    {%block jsfiles%}
-    <script>
-       
+    <label class="form-check-label" for="flexCheckDefault">
+      <b>Mark as Complete</b></label
+    >
+  </div>
+  {% endfor %}
+</div>
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const course_toggle = document.querySelectorAll('.course_toggle');
-            course_toggle.forEach((toggle) => {
-                toggle.addEventListener('change', function() {
-                    const course_title = this.getAttribute('data-from');
-                    console.log(course_title,"{{roadmap.id}}","{{csrf_token}}");
-                    const is_checked = this.checked;
-                    console.log(course_title, is_checked);
-                    if (is_checked) {
-                        fetch(`{% url 'techcompass:course_update' %}`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRFToken': '{{csrf_token}}'
-                            },
-                            body: JSON.stringify({
-                                course_title: course_title,
-                                is_checked: is_checked,
-                                roadmap_id: "{{roadmap.id}}",
-
-                            })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                        });
-                    } else {
-                        fetch(`{% url 'techcompass:course_update' %}`, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'X-CSRFToken': '{{csrf_token}}'
-                            },
-                            body: JSON.stringify({
-                                course_title: course_title,
-                                is_checked: is_checked,
-                                roadmap_id: "{{roadmap.id}}"
-                            })
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            console.log(data);
-                        });
-                    }
-                });
+<div style="height: 40px"></div>
+{% endif %} 
+{%block jsfiles%}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const course_toggle = document.querySelectorAll(".course_toggle");
+    course_toggle.forEach((toggle) => {
+      toggle.addEventListener("change", function () {
+        const course_title = this.getAttribute("data-from");
+        console.log(course_title, "{{roadmap.id}}", "{{csrf_token}}");
+        const is_checked = this.checked;
+        console.log(course_title, is_checked);
+        if (is_checked) {
+          fetch(`{% url 'techcompass:course_update' %}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": "{{csrf_token}}",
+            },
+            body: JSON.stringify({
+              course_title: course_title,
+              is_checked: is_checked,
+              roadmap_id: "{{roadmap.id}}",
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
             });
-        });
-    </script>
+        } else {
+          fetch(`{% url 'techcompass:course_update' %}`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "X-CSRFToken": "{{csrf_token}}",
+            },
+            body: JSON.stringify({
+              course_title: course_title,
+              is_checked: is_checked,
+              roadmap_id: "{{roadmap.id}}",
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data);
+            });
+        }
+      });
+    });
+  });
+</script>
 
-{%endblock%}
-
-
-{%endblock%}
+{%endblock%} {%endblock%}

@@ -139,7 +139,7 @@
     <div class="list-group border border-3 border-info">
       {% for progress in in_progress %}
       <div class="list-group-item text-white bg-black p-3">
-        <h5 class="mb-1">{{progress.0.roadmap.title}}</h5>
+        <a href="{% url 'techcompass:roadmap'%}\{{progress.0.roadmap.title}}" style="text-decoration: none;"><h5 class="mb-1 text-white">{{progress.0.roadmap.title}}</h5></a>
         <div class="progress">
           <div class="progress-bar bg-success" role="progressbar" style="width: {{progress.1}}%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">{{progress.1}}%</div>
         </div>
