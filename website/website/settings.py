@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 # IPconfig in cmd to use website on any device
-# add ip address to ALLOWED_HOSTS = ['*','IP_ADDRESS'] 
+# add ip address to 
+
 
 from pathlib import Path
 import os
@@ -30,7 +31,7 @@ SECRET_KEY = 'django-insecure-6jxoy%p5#z6#_p6c0_$v3zh&p3mmsruqph9ul(bizv3xu$*ri3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -134,3 +135,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #MY SETTINGS
 # AUTH_USER_MODEL = 'techcompass.User'
+

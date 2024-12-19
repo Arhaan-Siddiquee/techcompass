@@ -33,6 +33,7 @@ def roadmap_detail_view(request, roadmap_name):
 		roadmap = Roadmap.objects.get(title=roadmap_name)
 		courses = roadmap.courses_provided.all()
 		completed = Progress.objects.filter(user=request.user, roadmap=roadmap, completed=True)
+		roadmaps_list = Roadmap.objects.all()
 		p =[]
 		inprogress_roadmaps = request.user.progress.filter(completed=False)
 		for i in inprogress_roadmaps:
@@ -45,7 +46,7 @@ def roadmap_detail_view(request, roadmap_name):
 			return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses,"not_registered":True,'media_url': settings.MEDIA_URL})
 		
 		completed_courses = progress.completed_courses.all()
-		return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses, 'completed_courses': completed_courses,"finished":completed,'in_progress': p,'media_url': settings.MEDIA_URL})
+		return render(request, 'pages/roadmap_detail.html', {'roadmap': roadmap, 'courses': courses, 'completed_courses': completed_courses,"finished":completed,'in_progress': p,'roadmp_list':roadmaps_list,'media_url': settings.MEDIA_URL})
 	else:
 		return JsonResponse({'error': 'Invalid request'})
 	
@@ -149,10 +150,11 @@ def frontend_view(request):
 def dashboard_view(request,success=False):
 	completed_roadmaps = request.user.progress.filter(completed=True)
 	inprogress_roadmaps = request.user.progress.filter(completed=False)
+	roadmaps_list = Roadmap.objects.all()
 	p =[]
 	for i in inprogress_roadmaps:
 		courses_completed = i.completed_courses.all()
 		courses_provided = i.roadmap.courses_provided.all()
 		p.append((i,f"{len(courses_completed)/len(courses_provided)*100:.0f}"))
 	return render(request, 'pages/dashboard.html',{'user': request.user, 'in_progress': p,
-	'completed_roadmaps': completed_roadmaps, 'media_url': settings.MEDIA_URL,"success":success})
+	'completed_roadmaps': completed_roadmaps,'roadmp_list':roadmaps_list, 'media_url': settings.MEDIA_URL,"success":success})

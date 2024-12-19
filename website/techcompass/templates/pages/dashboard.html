@@ -25,18 +25,6 @@
 
 {% block body %}
 
-
-
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content bg-transparent border border-0">
-      <div class="modal-body text-center">
-        <img src="{% static 'Icons/frontendbdg.svg' %}" alt="frontend" height="300px">
-      </div>
-    </div>
-  </div>
-</div>
 <!--NAVBAR-->
 <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-transparent ">
     <div class="container">
@@ -92,16 +80,6 @@
     </div>
 </nav>
 
-{% comment %} {% if messages %}
-<div style="height: 100px;"></div>
-  {% for message in messages %}
-    <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
-      {{message}}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-  {% endfor %}
-{% endif %} {% endcomment %}
-  
 <!--DASHBOARD-->
 <div style="height: 40px;"></div>
 
@@ -118,10 +96,11 @@
     <h4>Earned Badges <i class="fa-solid fa-award"></i></h4>
     <div class="row">
       {% for completed in completed_roadmaps %}
+
       <div class="col-md-4 col-sm-6 mb-3">
         <div class="card text-center shadow-sm bg-black text-white">
           <div class="card-body">
-            <a type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a type="button" id="myBadge">
             <img src="{{media_url}}{{completed.roadmap.badge}}" alt="Badge" class="rounded-circle mb-3" style="height:130px" id="badge"></a>
             <h5 class="card-title">{{completed.roadmap.title}}</h5>
           </div>
@@ -150,6 +129,8 @@
     </div>
   </div>
 </div>
+
+
 
 
   {%endblock%}
